@@ -1,0 +1,45 @@
+h1 {
+  color: white;
+  text-align: right;
+  padding: 20px 50px;
+  z-index: 1;
+  font-size: 48px; }
+
+#board {
+  position: absolute;
+  top: 150px;
+  width: 770px;
+  height: 1617px;
+  margin: 20px 40px; }
+
+#start {
+  background-color: green; }
+
+#level2 {
+  display: none; }
+
+#level3 {
+  display: none; }
+
+#level4 {
+  display: none; }
+
+#hospital {
+  background-image: url("http://i.istockimg.com/file_thumbview_approve/20889576/6/stock-illustration-20889576-hospital-bed-sketch.jpg");
+  background-size: 120%; }
+
+#finish {
+  background-color: red; }
+
+.square {
+  height: 75px;
+  width: 75px;
+  background-color: #EEEEEE;
+  border: 1px solid black;
+  float: left;
+  margin: 0; }
+
+.x {
+  background-color: black; }
+
+/*# sourceMappingURL=style.css.map */
