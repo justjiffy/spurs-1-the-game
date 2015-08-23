@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 	<title>Kilbourn the Game</title>
 
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+
 
 </head>
 <body style="background-color: black">
 
 <h1>SPURS #1 - <span id="subLogo">The Game</span></h1>
-<div id="board">
 
-	<div id="level1">
+
+ <main> 
+
+	<div id="die"></div>
+  	
+  	<div id="board">
+
+		<div id="level1">
 			<!--row 1 --> 
 			<div class="square x"></div>
 			<div class="square x"></div>
@@ -296,10 +306,20 @@
 	</div> <!-- end of level 1 -->
 
 
-</div> <!--end of board -->
+  </div> <!--end of board -->
+</main>
 
+<aside>
+	<h3>Player 1</h3>
+	<p><strong>GOAL: </strong>This is the goal of level one...</p>
 
-<script type="text/javascript" src="js/app.js"></script>
+	<h4>ROLL DICE TO MOVE TOWARDS THE HOSPITAL</h4>
+	<button id="showL2">On to Level 2</button>	
+	<button id="showL3">On to Level 3</button>
+	<button id="showL4">On to Level 4</button>
+	<button id="reset">RESET</button>
+</aside>
 
+<script src="js/app.js"></script>
 </body>
 </html>

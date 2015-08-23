@@ -1,16 +1,31 @@
 h1 {
   color: white;
   text-align: right;
-  padding: 20px 50px;
+  padding: 10px 75px;
   z-index: 1;
   font-size: 48px; }
+
+button {
+  display: block; }
+
+#die {
+  height: 75px;
+  width: 75px;
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  background-color: white;
+  z-index: 1;
+  line-height: 75px;
+  vertical-align: center;
+  text-align: center; }
 
 #board {
   position: absolute;
   top: 150px;
+  left: 150px;
   width: 770px;
-  height: 1617px;
-  margin: 20px 40px; }
+  height: 1617px; }
 
 #start {
   background-color: green; }
@@ -31,9 +46,19 @@ h1 {
 #finish {
   background-color: red; }
 
+aside {
+  width: 20%;
+  position: fixed;
+  top: 150px;
+  right: 75px;
+  height: 65vh;
+  background-color: white;
+  padding: 25px;
+  overflow: scroll; }
+
 .square {
-  height: 75px;
-  width: 75px;
+  height: 70px;
+  width: 70px;
   background-color: #EEEEEE;
   border: 1px solid black;
   float: left;
@@ -41,5 +66,15 @@ h1 {
 
 .x {
   background-color: black; }
+
+@media screen and (max-width: 1040px) {
+  aside {
+    top: 125px;
+    left: 75px;
+    width: 80%;
+    height: 15vh; }
+
+  #board {
+    top: 325px; } }
 
 /*# sourceMappingURL=style.css.map */
