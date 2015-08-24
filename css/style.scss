@@ -3,7 +3,18 @@ h1 {
 	text-align: right;
 	padding: 10px 75px;
 	z-index: 1;
-	font-size: 48px;
+	font-size: 60px;
+	font-family: 'Birch W03';
+}
+
+h3 {
+	font-family: 'Birch W03';
+	font-size: 36px;	
+}
+
+p {
+	font-family: 'Birch W03';
+	font-size: 24px;
 }
 
 button {
@@ -52,8 +63,22 @@ button {
 	background-size: 120%;
 }
 
+#saloon {
+	background-image: url('https://s-media-cache-ak0.pinimg.com/236x/c7/43/25/c743252c20c52791578df84d5097cddf.jpg');
+	background-size: 100%;
+}
+
+#inn {
+	background-image: url('http://etc.usf.edu/clipart/65200/65220/65220_inn_mth.gif');
+	background-size: 180%;
+}
+
 #finish {
 	background-color: red;
+}
+
+.qMark {
+	background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Emblem-question.svg/75px-Emblem-question.svg.png')
 }
 
 aside {

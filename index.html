@@ -1,75 +1,96 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<!--jQuery links-->
 	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+		<!--Birch Font -->
+		<style type="text/css">
+
+		@import url("http://fast.fonts.net/t/1.css?apiType=css&projectid=e029b883-17b4-436c-89aa-29bfd214dc52");
+		@font-face{
+		font-family:"Birch W03_n7";
+		src:url("Fonts/c2085131-d065-4404-8de6-027fe55b1327.eot?#iefix") format("eot")
+		}
+		@font-face{
+		font-family:"Birch W03";
+		src:url("Fonts/c2085131-d065-4404-8de6-027fe55b1327.eot?#iefix");
+		src:url("Fonts/c2085131-d065-4404-8de6-027fe55b1327.eot?#iefix") format("eot"),url("Fonts/17ba5f0c-38f6-4e1f-9504-bfec342971bc.woff2") format("woff2"),url("Fonts/5b6ba774-97f8-49fe-8a1c-e98578f0cdf2.woff") format("woff"),url("Fonts/401920bd-c267-4f08-b3c1-9c8733c99d6a.ttf") format("truetype"),url("Fonts/38f94cbb-caf2-463b-8840-e11382b740ab.svg#38f94cbb-caf2-463b-8840-e11382b740ab") format("svg");
+		font-weight: 700;
+		font-style: normal;
+		}
+		</style>
+
 	<title>Kilbourn the Game</title>
 
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
-
-
 </head>
+
 <body style="background-color: black">
 
-<h1>SPURS #1 - <span id="subLogo">The Game</span></h1>
+<header>
+	<h1>SPURS #1 - The Game</h1>
+</header>
 
- <main> 
+<main> 
 
-	<div id="die"></div>
+  <div id="die"></div>
   	
-  	<div id="board">
+  <div id="board">
 
-		<div id="level1">
-			<!--row 1 --> 
-			<div class="square x"></div>
-			<div class="square x"></div>
-			<div class="square x"></div>
-			<div id ="start" class="square"></div>
-			<div class="square"></div>
-			<div class="square"></div>
-			<div class="square"></div>
-			<div class="square x"></div>
-			<div class="square x"></div>
-			<div class="square x"></div>
+	<div id="level1"> <!-- LEVEL 1 -->
+		<!--row 1 --> 
+		<div class="square x" ></div>
+		<div class="square x"></div>
+		<div class="square x"></div>
+		<div id ="start" class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square x"></div>
+		<div class="square x"></div>
+		<div class="square x"></div>
 
-			<!--row 2 -->
-			<div class="square x"></div>
-			<div class="square x"></div>
-			<div class="square x"></div>
-			<div class="square"></div>
-			<div class="square x"></div>
-			<div class="square x"></div>
-			<div class="square"></div>
-			<div class="square x"></div>
-			<div class="square x"></div>
-			<div class="square x"></div>
+		<!--row 2 -->
+		<div class="square x"></div>
+		<div class="square x"></div>
+		<div class="square x"></div>
+		<div class="square"></div>
+		<div class="square x"></div>
+		<div class="square x"></div>
+		<div class="square"></div>
+		<div class="square x"></div>
+		<div class="square x"></div>
+		<div class="square x"></div>
 
-			<!--row 3 -->
-			<div class="square x"></div>
-			<div class="square x"></div>
-			<div class="square x"></div>
-			<div class="square"></div>
-			<div class="square x"></div>
-			<div class="square x"></div>
-			<div class="square"></div>
-			<div class="square x"></div>
-			<div class="square x"></div>
-			<div class="square x"></div>
+		<!--row 3 -->
+		<div class="square x"></div>
+		<div class="square x"></div>
+		<div class="square x"></div>
+		<div class="square"></div>
+		<div class="square x"></div>
+		<div class="square x"></div>
+		<div class="square"></div>
+		<div class="square x"></div>
+		<div class="square x"></div>
+		<div class="square x"></div>
 
-			<!--row 4 -->
-			<div class="square x"></div>
-			<div class="square x"></div>
-			<div class="square x"></div>
-			<div id="hospital" class="square"></div>
-			<div class="square"></div>
-			<div class="square"></div>
-			<div class="square"></div>
-			<div class="square x"></div>
-			<div class="square x"></div>
-			<div class="square x"></div>
-			<div id="level2">
-				<!--row 5 -->
+		<!--row 4 -->
+		<div class="square x"></div>
+		<div class="square x"></div>
+		<div class="square x"></div>
+		<div id="hospital" class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square x"></div>
+		<div class="square x"></div>
+		<div class="square x"></div>
+			
+
+			<div id="level2"> <!-- LEVEL 2 -->
+				<!--row 5 *BRIDGE* -->
 				<div class="square x"></div>
 				<div class="square x"></div>
 				<div class="square x"></div>
@@ -81,7 +102,7 @@
 				<div class="square x"></div>
 				<div class="square x"></div>
 
-				<!--row 6 --> 
+				<!--row 6 *BRIDGE*--> 
 				<div class="square x"></div>
 				<div class="square x"></div>
 				<div class="square x"></div>
@@ -101,7 +122,7 @@
 				<div class="square"></div>
 				<div class="square"></div>
 				<div class="square"></div>
-				<div class="square"></div>
+				<div class="square qMark"></div>
 				<div class="square x"></div>
 				<div class="square x"></div>
 
@@ -135,7 +156,7 @@
 				<div class="square x"></div>
 				<div class="square x"></div>
 				<div class="square x"></div>
-				<div class="square"></div>
+				<div class="square qMark"></div>
 				<div class="square x"></div>
 				<div class="square x"></div>
 				<div class="square"></div>
@@ -150,12 +171,13 @@
 				<div class="square"></div>
 				<div class="square"></div>
 				<div class="square"></div>
-				<div class="square"></div>
+				<div id="saloon" class="square"></div>
 				<div class="square x"></div>
 				<div class="square x"></div>
 
-					<div id="level3">	
-						<!--row 12 -->
+
+					<div id="level3"> <!-- LEVEL 3 -->
+						<!--row 12 *BRIDGE* -->
 						<div class="square x"></div>
 						<div class="square x"></div>
 						<div class="square x"></div>
@@ -167,7 +189,7 @@
 						<div class="square x"></div>
 						<div class="square x"></div>
 
-						<!--row 13 --> 
+						<!--row 13 *BRIDGE* --> 
 						<div class="square x"></div>
 						<div class="square x"></div>
 						<div class="square x"></div>
@@ -178,15 +200,14 @@
 						<div class="square x"></div>
 						<div class="square x"></div>
 						<div class="square x"></div>
-
 
 						<!--row 14 -->
+						<div id="inn" class="square"></div>
 						<div class="square"></div>
 						<div class="square"></div>
 						<div class="square"></div>
 						<div class="square"></div>
-						<div class="square"></div>
-						<div class="square"></div>
+						<div class="square qMark"></div>
 						<div class="square"></div>
 						<div class="square x"></div>
 						<div class="square x"></div>
@@ -219,16 +240,17 @@
 						<!--row 17 -->
 						<div class="square"></div>
 						<div class="square"></div>
+						<div class="square qMark"></div>
 						<div class="square"></div>
-						<div class="square"></div>
 						<div class="square x"></div>
 						<div class="square x"></div>
 						<div class="square x"></div>
 						<div class="square x"></div>
 						<div class="square x"></div>
 						<div class="square x"></div>
-							<div id="level4">
-								<!--row 18 --> 
+							
+							<div id="level4"> <!-- LEVEL 4 -->
+								<!--row 18 *BRIDGE* --> 
 								<div class="square x"></div>
 								<div class="square x"></div>
 								<div class="square x"></div>
@@ -240,7 +262,7 @@
 								<div class="square x"></div>
 								<div class="square x"></div>
 
-								<!--row 19 -->
+								<!--row 19 *BRIDGE* -->
 								<div class="square x"></div>
 								<div class="square x"></div>
 								<div class="square x"></div>
@@ -256,7 +278,7 @@
 								<div class="square x"></div>
 								<div class="square x"></div>
 								<div class="square x"></div>
-								<div class="square"></div>
+								<div class="square qMark"></div>
 								<div class="square"></div>
 								<div class="square"></div>
 								<div class="square"></div>
@@ -303,8 +325,6 @@
 					</div> <!-- end of level 3 -->
 			</div> <!-- end of level 2 -->
 	</div> <!-- end of level 1 -->
-
-
   </div> <!--end of board -->
 </main>
 
@@ -312,7 +332,7 @@
 	<h3>Player 1</h3>
 	<p><strong>GOAL: </strong>This is the goal of level one...</p>
 
-	<h4>ROLL DICE TO MOVE TOWARDS THE HOSPITAL</h4>
+	<p>ROLL DICE TO MOVE TOWARDS THE HOSPITAL</p>
 	<button id="showL2">On to Level 2</button>	
 	<button id="showL3">On to Level 3</button>
 	<button id="showL4">On to Level 4</button>
