@@ -1,3 +1,6 @@
+main {
+	height: 2000px; 
+}
 h1 {
 	color: white;
 	text-align: right;
@@ -39,23 +42,11 @@ button {
   top: 150px;
   left: 150px;
   width: 770px;
-  height: 1617px;
+  height: 1617px; 
 }
 
 #start {
 	background-color: green;
-}
-
-#level2 {
-	display: none;
-}
-
-#level3 {
-	display: none;
-}
-
-#level4 {
-	display: none;
 }
 
 #hospital {

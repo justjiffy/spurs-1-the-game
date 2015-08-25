@@ -1,3 +1,6 @@
+main {
+  height: 2000px; }
+
 h1 {
   color: white;
   text-align: right;
@@ -38,15 +41,6 @@ button {
 
 #start {
   background-color: green; }
-
-#level2 {
-  display: none; }
-
-#level3 {
-  display: none; }
-
-#level4 {
-  display: none; }
 
 #hospital {
   background-image: url("http://i.istockimg.com/file_thumbview_approve/20889576/6/stock-illustration-20889576-hospital-bed-sketch.jpg");

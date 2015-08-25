@@ -37,6 +37,11 @@ function piece(col, row, img) {
 	this.col = col;
 	this.row = row;
 	this.img = "";
+	this.item1 = false;
+	this.item2 = false;
+	this.item3 = false;
+	this.item4 = false;
+	this.finalAnswer = false;
 }
 
 p1 = new piece(0,3,"images/p1-sherrif.png");
@@ -86,29 +91,28 @@ var start = function() {
 };
 
 $('html').on('keyup', function(el) {
-	if (count === 0 && el.keyCode == 32) {
-			start();
-			count++; 
+	if (el.keyCode == 13) {
+		start(); 
 	}
-	else if (count > 0 && el.keyCode == 39) {
-			count++;
-			console.log(count);
-			moveRight(p1);
-			checkAction();
+	else if (el.keyCode == 39) {
+		count++;
+		console.log(count);
+		moveRight(p1);
+		checkAction();
 	}
-	else if (count > 0 && el.keyCode == 37) {
+	else if (el.keyCode == 37) {
 		count++;
 		console.log(count);
 		moveLeft(p1);
 		checkAction();
 	}
-	else if (count > 0 && el.keyCode == 38) {
+	else if (el.keyCode == 38) {
 		count++;
 		console.log(count);
 		moveUp(p1);
 		checkAction();
 	}	
-	else if (count > 0 && el.keyCode == 40) {
+	else if (el.keyCode == 40) {
 		count++;
 		console.log(count);
 		moveDown(p1);
@@ -128,12 +132,13 @@ $('html').on('keydown', function(el) {
 });
 
 $('body').keyup(function(el) {
-	if(el.keyCode == 32 && count > 0) {
+	if(el.keyCode == 32 ) {
 		return dieRoll(); 
 	}
 });
 
 var dieRoll = function() {
+	count = 0;
 	$('#die').html((Math.floor((Math.random()*6)+1)))
 };
 
@@ -142,11 +147,13 @@ $('aside').resizable(); //can't be draggable and resizable??
 
 //game board options
 
-function checkAction() { 
-	if (p1.col == 3 && p1.row == 3) {
-		alert("you're at the hospital!")
+function checkAction() {
+	if ( parseInt($('#die').html()) == count ) {
+		if ( p1.col == 3 && p1.row == 3 ) { alert("you're at the hospital!"); p1.item1 = true; }
+		else if ( p1.col == 6 && p1.row == 7 ) { alert("You got a moment to rest and look at Harden's letter again... it definitely says 'something'") }
+		else if ( p1.col == 10 && p1.row == 7 ) { alert("Welcome to the saloon") }
+		else if ( p1.col == 9 && p1.row == 4 ) { alert("You were able to decipher a little more of the letter, it definitely says: There's something...") }
 	}
-	else { console.log('nuffin yet') }
 };
 
 
