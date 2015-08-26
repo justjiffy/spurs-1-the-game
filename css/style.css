@@ -86,6 +86,12 @@ button {
   height: 1617px;
   background-color: transparent; }
 
+#p1 {
+  display: none; }
+
+#p2 {
+  display: none; }
+
 #start {
   background-color: green; }
 

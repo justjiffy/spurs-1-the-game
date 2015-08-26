@@ -27,11 +27,13 @@ function printBoard() {
 }
 
 var count = 0;
+var player;
 
 function piece(col, row, img) {
 	this.col = col;
 	this.row = row;
 	this.img = img;
+	this.turn = false;
 	this.item1 = false;
 	this.item2 = false;
 	this.item3 = false;
@@ -39,25 +41,30 @@ function piece(col, row, img) {
 	this.finalAnswer = false;
 }
 
-p1 = new piece(0,3, '<img src="images/p1-sherrif.png" />' );
-p2 = new piece(0,4, '<img src="images/p2-orin.png" />' );
+p1 = new piece(0,3, '<img src="images/p1-sherrif.png" id="p1" />' );
+p2 = new piece(0,4, '<img src="images/p2-orin.png" id="p2" />' );
 
 // printBoard(boardArray);
 
 p1inArray = boardArray[p1.col][p1.row];
 p2inArray = boardArray[p2.col][p2.row];
 
-function prevMove(player) {
+var whoseTurn = function() {
+	if (p1.turn==true) { player = p1 }
+		else { player = p2 }
+};
+
+function prevMove() {
 	var arrayToChild = parseInt(player.col.toString()+player.row.toString());
-	$('#board').children()[arrayToChild].innerHTML = "";
-}
+	// $('#board').children()[arrayToChild].innerHTML = "";
+};
 
-function currMove(player) {
+function currMove() {
 	var arrayToChild = parseInt(player.col.toString() + player.row.toString());
-	$('#board').children()[arrayToChild].innerHTML = p1.img;
-}
+	$('#board').children()[arrayToChild].innerHTML = player.img;
+};
 
-moveRight = function(player) {
+moveRight = function() {
 	if (p1.row == 9) { $('#board').effect('shake'); }
 	else {
 	prevMove(p1);
@@ -65,29 +72,31 @@ moveRight = function(player) {
 	currMove(p1); }
 };
 
-moveLeft = function(player) {
+moveLeft = function() {
 	if (p1.row === 0) { $('#board').effect('shake'); }
 	else { prevMove(p1);
 	player.row--;
 	currMove(p1); }
 };
 
-moveUp = function(player) {
+moveUp = function() {
 	if (p1.col === 0) { $('#board').effect('shake'); }
 	else { prevMove(p1);
 	player.col--;
 	currMove(p1); }
 };
 
-moveDown = function(player) {
+moveDown = function() {
 	if (p1.col === 22) { $('#board').effect('shake'); }
 	else { prevMove(p1);
 	player.col++;
 	currMove(p1); }
 };
 
-var start = function(player1, player2) {
+var start = function() {
 	$('#start').html(p1.img);
+	p1.turn = true;
+	whoseTurn();
 	$('#start').append(p2.img);
 	$('#gameCard').show();
 };
@@ -129,21 +138,21 @@ $('body').keyup(function(el) {
 
 var dieRoll = function() {  
 	count = 0;
-	currRole = Math.floor((Math.random()*6)+1);
-	if (currRole == 1) { $('#die').html('<img src="images/die-1.jpg" />') }
-	else if (currRole == 2) { $('#die').html('<img src="images/die-2.jpg" />') }
-	else if (currRole == 3) { $('#die').html('<img src="images/die-3.jpg" />') }
-	else if (currRole == 4) { $('#die').html('<img src="images/die-4.jpg" />') }
-	else if (currRole == 5) { $('#die').html('<img src="images/die-5.jpg" />') }
-	else if (currRole == 6) { $('#die').html('<img src="images/die-6.jpg" />') }
+	currRoll = Math.floor((Math.random()*6)+1);
+	if (currRoll == 1) { $('#die').html('<img src="images/die-1.jpg" />') }
+	else if (currRoll == 2) { $('#die').html('<img src="images/die-2.jpg" />') }
+	else if (currRoll == 3) { $('#die').html('<img src="images/die-3.jpg" />') }
+	else if (currRoll == 4) { $('#die').html('<img src="images/die-4.jpg" />') }
+	else if (currRoll == 5) { $('#die').html('<img src="images/die-5.jpg" />') }
+	else if (currRoll == 6) { $('#die').html('<img src="images/die-6.jpg" />') }
 };
 
 $('#gameCard').draggable();
 $('aside').resizable(); //can't be draggable and resizable?? 
 
-//game board options
+//game board actions
 function checkAction() {
-	if ( currRole == count ) {
+	if ( currRoll == count ) {
 		if ( p1.col == 3 && p1.row == 3 ) { 
 				$('#popUpContent').html("").append(" <p>You made it to the hospital, but Harden could barely speak. Shaken by the sight of his friend spontaneously combusting, he barely manages to slip you an almost indecipherable note before visitng hours end.</p> <h3>Acquired 1 Item: Harden's Letter</h3><br> <center><button id='cont'>CONTINUE</button></center> " );
 				$('aside').toggle(true);
