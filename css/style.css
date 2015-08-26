@@ -5,7 +5,7 @@ main {
   height: 2000px;
   width: 850px;
   background-color: transparent;
-  margin: 0 auto;
+  margin-left: 5%;
   background-image: url("../images/background.jpg");
   background-color: black;
   background-repeat: no-repeat;
@@ -35,11 +35,24 @@ h1 {
   font-family: 'Birch W03';
   text-shadow: 5px -2px 0 #000,  5px 2px 0 #000, -1px -1px 0 #000,   1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; }
 
+h2 {
+  -webkit-margin-before: 0.2em;
+  -webkit-margin-after: 0.2em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  color: black;
+  text-align: center;
+  padding: 0px 75px;
+  z-index: 1;
+  font-size: 77px;
+  font-family: 'Birch W03'; }
+
 h3 {
   font-family: 'Birch W03';
   font-size: 40px;
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  text-align: center; }
 
 p {
   font-family: 'Birch W03';
@@ -47,7 +60,10 @@ p {
   text-align: center; }
 
 button {
-  display: block; }
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 5px;
+  margin: 0px 50px; }
 
 #die {
   height: 75px;
@@ -60,7 +76,7 @@ button {
   line-height: 75px;
   vertical-align: center;
   text-align: center;
-  box-shadow: 5px 1px 0 #000, -1px -1px 0 #000,   1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; }
+  border-radius: 10px; }
 
 #board {
   position: absolute;
@@ -92,15 +108,38 @@ button {
   background-image: url("../images/qmark.png"); }
 
 aside {
-  display: none;
-  width: 25%;
-  position: fixed;
-  top: 150px;
-  right: 75px;
-  height: 65vh;
-  padding: 25px;
+  border-radius: 20px;
   overflow: scroll;
-  background-color: white; }
+  display: block;
+  width: 80%;
+  position: fixed;
+  top: 10%;
+  left: 5%;
+  height: 80vh;
+  background-color: black;
+  background-image: url("../images/aside-bg.jpg");
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat; }
+
+#gameCard {
+  z-index: 0;
+  overflow: scroll;
+  display: none;
+  width: 20%;
+  position: fixed;
+  top: 10%;
+  right: 5%;
+  height: 90vh;
+  background-color: black;
+  background-image: url("../images/gamecard-bg.jpg");
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border-radius: 20px; }
+
+#popUpContent {
+  margin: 80px 125px; }
 
 .square {
   height: 70px;

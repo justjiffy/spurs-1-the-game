@@ -83,6 +83,7 @@ moveDown = function(player) {
 
 var start = function() {
 	$('#board').children('#start')[0].innerHTML = '<img src="images/p1-sherrif.png" />';
+	$('#gameCard').show();
 };
 
 $('html').on('keyup', function(el) {
@@ -122,26 +123,33 @@ $('body').keyup(function(el) {
 
 var dieRoll = function() {  
 	count = 0;
-	var currRole = Math.floor((Math.random()*6)+1);
+	currRole = Math.floor((Math.random()*6)+1);
 	if (currRole == 1) { $('#die').html('<img src="images/die-1.jpg" />') }
 	else if (currRole == 2) { $('#die').html('<img src="images/die-2.jpg" />') }
 	else if (currRole == 3) { $('#die').html('<img src="images/die-3.jpg" />') }
 	else if (currRole == 4) { $('#die').html('<img src="images/die-4.jpg" />') }
 	else if (currRole == 5) { $('#die').html('<img src="images/die-5.jpg" />') }
 	else if (currRole == 6) { $('#die').html('<img src="images/die-6.jpg" />') }
-	}
+};
 
-$('aside').draggable();
+$('#gameCard').draggable();
 $('aside').resizable(); //can't be draggable and resizable?? 
 
 //game board options
 function checkAction() {
-	if ( parseInt($('#die').html()) == count ) {
-		if ( p1.col == 3 && p1.row == 3 ) { alert("You made it to the hospital, but Harden could barely speak. Shaken by the sight of his friend spontaneously combusting, he barely manages to slip you an almost indecipherable note before visitng hours end."); p1.item1 = true; }
+	if ( currRole == count ) {
+		if ( p1.col == 3 && p1.row == 3 ) { 
+				$('#popUpContent').html("").append("<p>You made it to the hospital, but Harden could barely speak. Shaken by the sight of his friend spontaneously combusting, he barely manages to slip you an almost indecipherable note before visitng hours end.</p><h3>Acquired 1 Item: Harden's Letter</h3>");
+				$('aside').toggle(true);
+				p1.item1 = true; }
 		else if ( p1.col == 6 && p1.row == 7 ) { alert("You got a moment to rest and look at Harden's letter again... it definitely says 'something'") }
 		else if ( p1.col == 10 && p1.row == 7 ) { alert("Welcome to the saloon") }
 		else if ( p1.col == 9 && p1.row == 4 ) { alert("You showed the letter to a guy at the bar, and he was pretty sure he read: 'There's something...' but couldn't make out the rest") }
 	}
 }
 
-
+$('#play1player').on('click', function() {
+	console.log('cool!')
+	$('aside').toggle(false);
+	start();
+})
