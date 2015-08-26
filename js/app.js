@@ -31,7 +31,7 @@ var count = 0;
 function piece(col, row, img) {
 	this.col = col;
 	this.row = row;
-	this.img = "";
+	this.img = img;
 	this.item1 = false;
 	this.item2 = false;
 	this.item3 = false;
@@ -39,13 +39,13 @@ function piece(col, row, img) {
 	this.finalAnswer = false;
 }
 
-p1 = new piece(0,3,"images/p1-sherrif.png");
-
-p2 = new piece(0,3,"p2piece");
+p1 = new piece(0,3, '<img src="images/p1-sherrif.png" />' );
+p2 = new piece(0,4, '<img src="images/p2-orin.png" />' );
 
 // printBoard(boardArray);
 
 p1inArray = boardArray[p1.col][p1.row];
+p2inArray = boardArray[p2.col][p2.row];
 
 function prevMove(player) {
 	var arrayToChild = parseInt(player.col.toString()+player.row.toString());
@@ -54,35 +54,41 @@ function prevMove(player) {
 
 function currMove(player) {
 	var arrayToChild = parseInt(player.col.toString() + player.row.toString());
-	$('#board').children()[arrayToChild].innerHTML = '<img src="images/p1-sherrif.png" />';
+	$('#board').children()[arrayToChild].innerHTML = p1.img;
 }
 
 moveRight = function(player) {
+	if (p1.row == 9) { $('#board').effect('shake'); }
+	else {
 	prevMove(p1);
 	player.row++;
-	currMove(p1);
+	currMove(p1); }
 };
 
 moveLeft = function(player) {
-	prevMove(p1);
+	if (p1.row === 0) { $('#board').effect('shake'); }
+	else { prevMove(p1);
 	player.row--;
-	currMove(p1);
+	currMove(p1); }
 };
 
 moveUp = function(player) {
-	prevMove(p1);
+	if (p1.col === 0) { $('#board').effect('shake'); }
+	else { prevMove(p1);
 	player.col--;
-	currMove(p1);
+	currMove(p1); }
 };
 
 moveDown = function(player) {
-	prevMove(p1);
+	if (p1.col === 22) { $('#board').effect('shake'); }
+	else { prevMove(p1);
 	player.col++;
-	currMove(p1);
+	currMove(p1); }
 };
 
-var start = function() {
-	$('#board').children('#start')[0].innerHTML = '<img src="images/p1-sherrif.png" />';
+var start = function(player1, player2) {
+	$('#start').html(p1.img);
+	$('#start').append(p2.img);
 	$('#gameCard').show();
 };
 
@@ -139,17 +145,19 @@ $('aside').resizable(); //can't be draggable and resizable??
 function checkAction() {
 	if ( currRole == count ) {
 		if ( p1.col == 3 && p1.row == 3 ) { 
-				$('#popUpContent').html("").append("<p>You made it to the hospital, but Harden could barely speak. Shaken by the sight of his friend spontaneously combusting, he barely manages to slip you an almost indecipherable note before visitng hours end.</p><h3>Acquired 1 Item: Harden's Letter</h3>");
+				$('#popUpContent').html("").append(" <p>You made it to the hospital, but Harden could barely speak. Shaken by the sight of his friend spontaneously combusting, he barely manages to slip you an almost indecipherable note before visitng hours end.</p> <h3>Acquired 1 Item: Harden's Letter</h3><br> <center><button id='cont'>CONTINUE</button></center> " );
 				$('aside').toggle(true);
-				p1.item1 = true; }
+				p1.item1 = true;
+				$('#cont').on('click', function() { $('aside').toggle(false) }); }
 		else if ( p1.col == 6 && p1.row == 7 ) { alert("You got a moment to rest and look at Harden's letter again... it definitely says 'something'") }
 		else if ( p1.col == 10 && p1.row == 7 ) { alert("Welcome to the saloon") }
 		else if ( p1.col == 9 && p1.row == 4 ) { alert("You showed the letter to a guy at the bar, and he was pretty sure he read: 'There's something...' but couldn't make out the rest") }
 	}
-}
+};
 
 $('#play1player').on('click', function() {
-	console.log('cool!')
 	$('aside').toggle(false);
 	start();
-})
+});
+
+
