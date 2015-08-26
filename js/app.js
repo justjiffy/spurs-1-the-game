@@ -43,7 +43,7 @@ p1 = new piece(0,3,"images/p1-sherrif.png");
 
 p2 = new piece(0,3,"p2piece");
 
-printBoard(boardArray);
+// printBoard(boardArray);
 
 p1inArray = boardArray[p1.col][p1.row];
 
@@ -115,15 +115,22 @@ $('html').on('keydown', function(el) {
 	}
 });
 
-$('body').keyup(function(el) {
-	function dieRoll() {  
-		count = 0;
-		$('#die').html((Math.floor((Math.random()*6)+1)))
-		}
-	if (el.keyCode == 32 ) {
-		return dieRoll()
-	}
+$('body').keyup(function(el) { 
+	if ( el.keyCode == 32 ) { return dieRoll(); 
+ 	};
 });
+
+var dieRoll = function() {  
+	count = 0;
+	var currRole = Math.floor((Math.random()*6)+1);
+	if (currRole == 1) { $('#die').html('<img src="images/die-1.jpg" />') }
+	else if (currRole == 2) { $('#die').html('<img src="images/die-2.jpg" />') }
+	else if (currRole == 3) { $('#die').html('<img src="images/die-3.jpg" />') }
+	else if (currRole == 4) { $('#die').html('<img src="images/die-4.jpg" />') }
+	else if (currRole == 5) { $('#die').html('<img src="images/die-5.jpg" />') }
+	else if (currRole == 6) { $('#die').html('<img src="images/die-6.jpg" />') }
+	}
+
 $('aside').draggable();
 $('aside').resizable(); //can't be draggable and resizable?? 
 

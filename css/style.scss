@@ -1,14 +1,17 @@
 body {
-	background-image: url('../images/background.jpg');
-	background-color: black;
-	background-repeat: no-repeat;	
-	background-position: center;
-	background-size:100%
+	background-color: black
 }
 
 main {
 	height: 2000px; 
+	width: 850px;
 	background-color: transparent;
+	margin: 0 auto;
+	background-image: url('../images/background.jpg');
+	background-color: black;
+	background-repeat: no-repeat;	
+	background-position: top center;
+	background-size: 100%
 }
 
 footer {
@@ -64,7 +67,7 @@ button {
 	position: fixed;
 	bottom: 25px;
 	left: 25px;
-	background-color: white;
+	background-color: black;
 	z-index: 1;
 	line-height: 75px;
 	vertical-align: center;
@@ -79,7 +82,7 @@ button {
 #board {
   position: absolute;
   top: 150px;
-  left: 150px;
+  left: 20%;
   width: 770px;
   height: 1617px; 
   background-color: transparent;
@@ -113,6 +116,7 @@ button {
 }
 
 aside {
+	display: none;
 	width: 25%;
 	position: fixed;
 	top: 150px;
