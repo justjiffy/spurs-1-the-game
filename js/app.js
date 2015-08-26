@@ -50,52 +50,58 @@ p1inArray = boardArray[p1.col][p1.row];
 p2inArray = boardArray[p2.col][p2.row];
 
 var whoseTurn = function() {
-	if (p1.turn==true) { player = p1 }
-		else { player = p2 }
+	if (p1.turn==true) { player = p1; $('#p1').show(); $('#p2').hide(); }
+		else { player = p2; $('#p2').show(); $('#p1').hide(); }
 };
 
 function prevMove() {
 	var arrayToChild = parseInt(player.col.toString()+player.row.toString());
-	// $('#board').children()[arrayToChild].innerHTML = "";
+	$('#board').children()[arrayToChild].innerHTML = "";
 };
 
 function currMove() {
 	var arrayToChild = parseInt(player.col.toString() + player.row.toString());
 	$('#board').children()[arrayToChild].innerHTML = player.img;
+	whoseTurn();
 };
 
 moveRight = function() {
-	if (p1.row == 9) { $('#board').effect('shake'); }
+	if (currRoll - count === -1) { alert('next player!') }
+	else if (player.row == 9) { $('#board').effect('shake'); }
 	else {
-	prevMove(p1);
+	prevMove(player);
 	player.row++;
-	currMove(p1); }
+	currMove(player); }
 };
 
 moveLeft = function() {
-	if (p1.row === 0) { $('#board').effect('shake'); }
-	else { prevMove(p1);
+	if (currRoll - count === -1) { alert('next player!') }
+	else if (player.row === 0) { $('#board').effect('shake'); }
+	else { prevMove(player);
 	player.row--;
-	currMove(p1); }
+	currMove(player); }
 };
 
 moveUp = function() {
-	if (p1.col === 0) { $('#board').effect('shake'); }
-	else { prevMove(p1);
+	if (currRoll - count === -1) { alert('next player!') }
+	else if (player.col === 0) { $('#board').effect('shake'); }
+	else { prevMove(player);
 	player.col--;
-	currMove(p1); }
+	currMove(player); }
 };
 
 moveDown = function() {
-	if (p1.col === 22) { $('#board').effect('shake'); }
-	else { prevMove(p1);
-	player.col++;
-	currMove(p1); }
+	if (currRoll - count === -1) { alert('next player!') }
+	else if (player.col === 22) { $('#board').effect('shake') }
+	else { prevMove(player);
+		player.col++;
+		currMove(player); }
 };
 
 var start = function() {
-	$('#start').html(p1.img);
 	p1.turn = true;
+	whoseTurn();
+	$('#start').html(player.img);
 	whoseTurn();
 	$('#start').append(p2.img);
 	$('#gameCard').show();
@@ -105,22 +111,22 @@ $('html').on('keyup', function(el) {
 	if (el.keyCode == 13) { start(); }
 	else if (el.keyCode == 39) {
 		count++;
-		moveRight(p1);
+		moveRight(player);
 		checkAction();
 	}
 	else if (el.keyCode == 37) {
 		count++;
-		moveLeft(p1);
+		moveLeft(player);
 		checkAction();
 	}
 	else if (el.keyCode == 38) { 
 		count++;
-		moveUp(p1);
+		moveUp(player);
 		checkAction(); 
 	}	
 	else if (el.keyCode == 40) {
 		count++;
-		moveDown(p1);
+		moveDown(player);
 		checkAction();
 	}
 });
@@ -153,14 +159,14 @@ $('aside').resizable(); //can't be draggable and resizable??
 //game board actions
 function checkAction() {
 	if ( currRoll == count ) {
-		if ( p1.col == 3 && p1.row == 3 ) { 
+		if ( player.col == 3 && player.row == 3 ) { 
 				$('#popUpContent').html("").append(" <p>You made it to the hospital, but Harden could barely speak. Shaken by the sight of his friend spontaneously combusting, he barely manages to slip you an almost indecipherable note before visitng hours end.</p> <h3>Acquired 1 Item: Harden's Letter</h3><br> <center><button id='cont'>CONTINUE</button></center> " );
 				$('aside').toggle(true);
-				p1.item1 = true;
+				player.item1 = true;
 				$('#cont').on('click', function() { $('aside').toggle(false) }); }
-		else if ( p1.col == 6 && p1.row == 7 ) { alert("You got a moment to rest and look at Harden's letter again... it definitely says 'something'") }
-		else if ( p1.col == 10 && p1.row == 7 ) { alert("Welcome to the saloon") }
-		else if ( p1.col == 9 && p1.row == 4 ) { alert("You showed the letter to a guy at the bar, and he was pretty sure he read: 'There's something...' but couldn't make out the rest") }
+		else if ( player.col == 6 && player.row == 7 ) { alert("You got a moment to rest and look at Harden's letter again... it definitely says 'something'") }
+		else if ( player.col == 10 && player.row == 7 ) { alert("Welcome to the saloon") }
+		else if ( player.col == 9 && player.row == 4 ) { alert("You showed the letter to a guy at the bar, and he was pretty sure he read: 'There's something...' but couldn't make out the rest") }
 	}
 };
 
