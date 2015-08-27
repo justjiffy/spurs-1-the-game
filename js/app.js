@@ -110,10 +110,11 @@ moveDown = function() {
 };
 
 var start1 = function() {
-
+	$('#popUpContent').html('<p>Hey there lonely stranger, <br> This game is currenly only available in two player mode. Channel your alter ego and click below to keep playing.</p><br><br> <button onClick="start2();">Keep Playing</button> ' );
 };
 
 var start2 = function() {
+	$('aside').toggle(false);
 	p1.turn = true;
 	whoseTurn();
 	$('#start').html('<img src="images/p1-sherrif.png" class="p1" />').append('<img src="images/p2-orin.png" class="p2" />');
@@ -122,7 +123,8 @@ var start2 = function() {
 };
 
 $('html').on('keyup', function(el) {
-	if (el.keyCode == 39) {
+	if (currRoll - count === 0) { $('#instruction').show() }
+	else if (el.keyCode == 39) {
 		moveRight(player);
 		checkAction();
 	}
@@ -177,7 +179,7 @@ function checkAction() {
 	if (currRoll == count) {
 		if ( player.col == 3 && player.row == 3 ) { 
 			if (player.item1 === false) {
-			 $('#popUpContent').html("").append(" <p>You made it to the hospital, but Harden could barely speak. Shaken by the sight of his friend spontaneously combusting, he barely manages to slip you an almost indecipherable note before visitng hours end.</p> <h3>Acquired 1 Item: Harden's Letter</h3><br> <center><button id='cont'>CONTINUE</button></center> " );
+			 $('#popUpContent').html("").append(" <br><br><p>You made it to the hospital, but Harden could barely speak. Shaken by the sight of his friend spontaneously combusting, he barely manages to slip you an almost indecipherable note before visitng hours end.</p><br><br><h3>Acquired 1 Item: Harden's Letter</h3><br><br><p>If you can make it through Adam's Ale to the Town Center, maybe you'll have more luck</p><br><br><center><button id='cont'>CONTINUE</button></center> " );
 			 $('aside').toggle(true);
 			 player.item1 = true;
 			 $('#cont').on('click', function() { $('aside').toggle(false) });
@@ -200,8 +202,10 @@ function nextPlayer() {
 		whoseTurn();
 		}
 };
+$('#play1player').on('click', function() {
+	start1();
+});
 
 $('#play2player').on('click', function() {
-	$('aside').toggle(false);
 	start2();
 });

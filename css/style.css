@@ -13,6 +13,7 @@ main {
   background-size: 100%; }
 
 footer {
+  padding-right: 20%;
   font-family: Tahoma, Arial;
   font-size: 14px;
   text-align: center;
@@ -41,8 +42,9 @@ h2 {
   -webkit-margin-start: 0px;
   -webkit-margin-end: 0px;
   color: black;
+  padding: 0;
+  margin: 0;
   text-align: center;
-  padding: 0px 75px;
   z-index: 1;
   font-size: 77px;
   font-family: 'Birch W03'; }
@@ -56,6 +58,8 @@ h3 {
 
 p {
   font-family: 'Birch W03';
+  padding: 0;
+  margin: 0;
   font-size: 28px;
   text-align: center; }
 
@@ -63,7 +67,7 @@ button {
   background-color: white;
   border: 3px solid black;
   border-radius: 5px;
-  margin: 0px 50px; }
+  margin: 0 auto; }
 
 #die {
   height: 75px;
@@ -116,6 +120,7 @@ button {
   background-image: url("../images/qmark.png"); }
 
 aside {
+  padding-top: 50px;
   z-index: 1;
   border-radius: 20px;
   overflow: scroll;
@@ -169,7 +174,8 @@ aside {
   border-radius: 20px; }
 
 #popUpContent {
-  margin: 80px 125px; }
+  margin: 20px 125px;
+  text-align: center; }
 
 .square {
   height: 70px;
