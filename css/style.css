@@ -86,11 +86,13 @@ button {
   height: 1617px;
   background-color: transparent; }
 
-#p1 {
-  display: none; }
+.p1 {
+  display: block;
+  z-index: 0; }
 
-#p2 {
-  display: none; }
+.p2 {
+  display: block;
+  z-index: 1; }
 
 #start {
   background-color: green; }
@@ -152,7 +154,8 @@ aside {
   width: 70px;
   background-color: white;
   border: 1px solid black;
-  float: left; }
+  float: left;
+  overflow: hidden; }
 
 .x {
   border: 1px solid transparent;

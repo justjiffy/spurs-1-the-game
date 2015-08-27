@@ -101,12 +101,14 @@ button {
   background-color: transparent;
 }
 
-#p1 {
-	display: none;
+.p1 {
+	display: block;
+	z-index: 0;
 }
 
-#p2 {
-	display: none;
+.p2 {
+	display: block;
+	z-index: 1;
 }
 
 #start {
@@ -179,6 +181,7 @@ aside {
 	background-color: rgba(255,255,255,1);
 	border: 1px solid black;
 	float: left;
+	overflow: hidden;	
 }
 
 .x {
