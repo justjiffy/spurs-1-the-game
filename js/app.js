@@ -122,6 +122,11 @@ var start2 = function() {
 	$('#instruction').show().html('Press Space Bar to Roll Die');
 };
 
+var close = function() {
+	console.log('close window');
+	$('aside').hide();
+};
+
 $('html').on('keyup', function(el) {
 	if (currRoll - count === 0) { $('#instruction').show() }
 	else if (el.keyCode == 39) {
@@ -151,7 +156,7 @@ $('html').on('keydown', function(el) {
 
 $('body').keyup(function(el) {
 	if ( el.keyCode == 32 ) { dieRoll(); 
-		if (currRoll === 1) { $('#instruction').html('Use Arrow Keys to Move ' + currRoll + ' Space.') }
+		if (currRoll === 1) { $('#instruction').show().html('Use Arrow Keys to Move ' + currRoll + ' Space.') }
 		else { $('#instruction').show().html('Use Arrow Keys to Move ' + currRoll + ' Spaces.') }
 	} 
 });
@@ -186,7 +191,14 @@ function checkAction() {
 			 };
 			 nextPlayer();
 			}	
-		else if ( player.col == 6 && player.row == 7 ) { alert("You got a moment to rest and look at Harden's letter again... it definitely says 'something'"); nextPlayer(); }
+		else if ( player.col == 6 && player.row == 7 ) { 
+			if (player.item1 === false) { 
+				$('#popUpContent').html("Have you visited Harden at the Hospital Yet? <br><br><br><br> <button id='cont'>Keep Playing</button> " ); 
+				$('#cont').on('click', function() { $('aside').toggle(false) }); }
+				else { $('#popUpContent').html("You got a moment to rest and look at Harden's letter again... it definitely says 'something'"); }
+			$('aside').toggle(true); 
+			nextPlayer(); 
+			}	
 		else if ( player.col == 10 && player.row == 7 ) { alert("Welcome to the saloon"); nextPlayer(); }
 		else if ( player.col == 9 && player.row == 4 ) { alert("You showed the letter to a guy at the bar, and he was pretty sure he read: 'There's something...' but couldn't make out the rest"); nextPlayer(); }
 		else { nextPlayer() }

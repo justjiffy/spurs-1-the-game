@@ -175,6 +175,9 @@ aside {
 
 #popUpContent {
   margin: 20px 125px;
+  text-align: center;
+  font-family: 'Birch W03';
+  font-size: 40px;
   text-align: center; }
 
 .square {
