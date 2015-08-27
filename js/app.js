@@ -40,7 +40,7 @@ function piece(col, row, img) {
 	this.item3 = false;
 	this.item4 = false;
 	this.finalAnswer = false;
-	this.imgStored = "";
+	this.imgStored = false;
 }
 
 p1 = new piece(0,3, '<img src="images/p1-sherrif.png" class="p1" />' );
@@ -56,65 +56,63 @@ function whoseTurn() {
 	else { player = p2 }
 };
 
+function doubleBooked() {
+	var arrayToChild = parseInt(player.col.toString() + player.row.toString());	
+	if ( $('#board').children()[arrayToChild].innerHTML.indexOf('orin') != -1 ) { console.log('put the hat back') }
+};
+
 function prevMove() {
 	var arrayToChild = parseInt(player.col.toString()+player.row.toString());
-	if (p2.imgStored == p2.img) { $('#board').children()[arrayToChild].innerHTML = p2.img }
-	else if (p2.imgStored == p2.img) { $('#board').children()[arrayToChild].innerHTML = p1.img }
-	else { $('#board').children()[arrayToChild].innerHTML = "" } 
-	// (function() {
-	// if ( $('#board').children()[arrayToChild].innerHTML.indexOf('orin') != -1 ) { console.log('orin was there') }
-	// else if ($('#board').children()[arrayToChild].innerHTML.indexOf('sherrif') != -1) { console.log('sherrif was there') } 
-	// else if ( 1 == 1 ) { $('#board').children()[arrayToChild].innerHTML = "" } 	)}
+	$('#board').children()[arrayToChild].innerHTML = ""; 
 };
 
 function currMove() {
-	var arrayToChild = parseInt(player.col.toString() + player.row.toString());
-	console.log('p2.imgStored'); 	
+	var arrayToChild = parseInt(player.col.toString() + player.row.toString());	
 	$('#board').children()[arrayToChild].innerHTML = player.img;
 	whoseTurn();
-	p2.imgStored = "";
-	p1.imgStored = "";
 };
 
-function checkSquare() {
-	var arrayToChild = parseInt(player.col.toString() + player.row.toString());
-	if ( $('#board').children()[arrayToChild].innerHTML.indexOf('orin') != -1) { p2.imgStored = p2.img } 
-	else if ( $('#board').children()[arrayToChild].innerHTML.indexOf('sherrif' != -1) ) { p1.imgStored = p1.img }
-}; 	
-
 moveRight = function() {
-	if (player.row == 9) { $('#board').effect('shake'); }
-	else { checkSquare();
-		prevMove(player);
+	if ( player.row === 9 || boardArray[player.col][player.row + 1] == "X" ) { $('#board').effect('shake'); }
+	else { 
+		prevMove();
 		player.row++;
-		currMove(player); }
+		currMove();
+
+	count++ 		 }
 };
 
 moveLeft = function() {
-	if (player.row === 0) { $('#board').effect('shake'); }
-	else { checkSquare();
-		prevMove(player);
+	if ( player.row === 0 || boardArray[player.col][player.row - 1] == "X" ) { $('#board').effect('shake'); }
+	else { 
+		prevMove();
 		player.row--;
-		currMove(player); }
+		currMove(); 
+		count++ }
 };
 
 moveUp = function() {
-	if (player.col === 0) { $('#board').effect('shake'); }
-	else { checkSquare();
-		prevMove(player);
+	if ( player.col === 0 || boardArray[player.col - 1][player.row] == "X" ) { $('#board').effect('shake'); }
+	else { 
+		prevMove();
 		player.col--;
-		currMove(player); }
+		currMove(); 
+		count++ }
 };
 
 moveDown = function() {
-	if (player.col === 22) { $('#board').effect('shake') }
-	else { checkSquare();
-		prevMove(player);
+	if ( player.col === 22 || boardArray[player.col + 1][player.row] == "X" ) { $('#board').effect('shake') }
+	else { prevMove();
 		player.col++;
-		currMove(player); }
+		currMove(); 
+		count++ }
 };
 
-var start = function() {
+var start1 = function() {
+
+};
+
+var start2 = function() {
 	p1.turn = true;
 	whoseTurn();
 	$('#start').html('<img src="images/p1-sherrif.png" class="p1" />').append('<img src="images/p2-orin.png" class="p2" />');
@@ -123,22 +121,18 @@ var start = function() {
 
 $('html').on('keyup', function(el) {
 	if (el.keyCode == 39) {
-		count++;
 		moveRight(player);
 		checkAction();
 	}
 	else if (el.keyCode == 37) {
-		count++;
 		moveLeft(player);
 		checkAction();
 	}
 	else if (el.keyCode == 38) { 
-		count++;
 		moveUp(player);
 		checkAction();
 	}	
 	else if (el.keyCode == 40) {
-		count++;
 		moveDown(player);
 		checkAction();
 	}
@@ -170,20 +164,22 @@ $('aside').resizable(); //can't be draggable and resizable??
 
 //game board actions
 function checkAction() {
-		if (currRoll == count) {
-			if ( player.col == 3 && player.row == 3 ) { 
-				if (player.item1 === false) {
-				 $('#popUpContent').html("").append(" <p>You made it to the hospital, but Harden could barely speak. Shaken by the sight of his friend spontaneously combusting, he barely manages to slip you an almost indecipherable note before visitng hours end.</p> <h3>Acquired 1 Item: Harden's Letter</h3><br> <center><button id='cont'>CONTINUE</button></center> " );
-				 $('aside').toggle(true);
-				 player.item1 = true;
-				 $('#cont').on('click', function() { $('aside').toggle(false) });
-				 nextPlayer(); }
-				}	
-			else if ( player.col == 6 && player.row == 7 ) { alert("You got a moment to rest and look at Harden's letter again... it definitely says 'something'"); nextPlayer(); }
-			else if ( player.col == 10 && player.row == 7 ) { alert("Welcome to the saloon"); nextPlayer(); }
-			else if ( player.col == 9 && player.row == 4 ) { alert("You showed the letter to a guy at the bar, and he was pretty sure he read: 'There's something...' but couldn't make out the rest"); nextPlayer(); }
-			else { nextPlayer() }
-		}
+	p2.imgStored = false;
+	p1.imgStored = false;
+	if (currRoll == count) {
+		if ( player.col == 3 && player.row == 3 ) { 
+			if (player.item1 === false) {
+			 $('#popUpContent').html("").append(" <p>You made it to the hospital, but Harden could barely speak. Shaken by the sight of his friend spontaneously combusting, he barely manages to slip you an almost indecipherable note before visitng hours end.</p> <h3>Acquired 1 Item: Harden's Letter</h3><br> <center><button id='cont'>CONTINUE</button></center> " );
+			 $('aside').toggle(true);
+			 player.item1 = true;
+			 $('#cont').on('click', function() { $('aside').toggle(false) });
+			 nextPlayer(); }
+			}	
+		else if ( player.col == 6 && player.row == 7 ) { alert("You got a moment to rest and look at Harden's letter again... it definitely says 'something'"); nextPlayer(); }
+		else if ( player.col == 10 && player.row == 7 ) { alert("Welcome to the saloon"); nextPlayer(); }
+		else if ( player.col == 9 && player.row == 4 ) { alert("You showed the letter to a guy at the bar, and he was pretty sure he read: 'There's something...' but couldn't make out the rest"); nextPlayer(); }
+		else { nextPlayer() }
+	}
 }
 
 
@@ -196,7 +192,7 @@ function nextPlayer() {
 		}
 };
 
-$('#play1player').on('click', function() {
+$('#play2player').on('click', function() {
 	$('aside').toggle(false);
-	start();
+	start2();
 });
