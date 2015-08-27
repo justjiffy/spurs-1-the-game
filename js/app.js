@@ -29,6 +29,7 @@ function printBoard() {
 var currRoll = 0; 
 var count = 0;
 var player;
+var pieceStored;
 
 function piece(col, row, img) {
 	this.col = col;
@@ -43,8 +44,8 @@ function piece(col, row, img) {
 	this.imgStored = false;
 }
 
-p1 = new piece(0,3, '<img src="images/p1-sherrif.png" class="p1" />' );
-p2 = new piece(0,3, '<img src="images/p2-orin.png" class="p2" />' );
+p1 = new piece(0,3, '<img src="images/p1-sherrif.png" id="p1" />' );
+p2 = new piece(0,3, '<img src="images/p2-orin.png" id="p2" />' );
 
 // printBoard(boardArray);
 
@@ -54,21 +55,21 @@ p2inArray = boardArray[p2.col][p2.row];
 function whoseTurn() {
 	if (p1.turn===true) { player = p1 } 
 	else { player = p2 }
-};
-
-function doubleBooked() {
-	var arrayToChild = parseInt(player.col.toString() + player.row.toString());	
-	if ( $('#board').children()[arrayToChild].innerHTML.indexOf('orin') != -1 ) { console.log('put the hat back') }
+	$('gameCard').html(player);
 };
 
 function prevMove() {
 	var arrayToChild = parseInt(player.col.toString()+player.row.toString());
-	$('#board').children()[arrayToChild].innerHTML = ""; 
+	if ( player == p1 && $('#board').children()[arrayToChild].innerHTML.indexOf('orin') > -1 ) {  
+			$('#board').children()[arrayToChild].innerHTML = p2.img } 
+	else if ( player == p2 && $('#board').children()[arrayToChild].innerHTML.indexOf('sherrif') > -1 ) {
+			$('#board').children()[arrayToChild].innerHTML = p1.img }
+	else { $('#board').children()[arrayToChild].innerHTML = "" }
 };
 
 function currMove() {
 	var arrayToChild = parseInt(player.col.toString() + player.row.toString());	
-	$('#board').children()[arrayToChild].innerHTML = player.img;
+	$('#board').children()[arrayToChild].innerHTML = (player.img + $('#board').children()[arrayToChild].innerHTML);
 	whoseTurn();
 };
 
@@ -117,6 +118,7 @@ var start2 = function() {
 	whoseTurn();
 	$('#start').html('<img src="images/p1-sherrif.png" class="p1" />').append('<img src="images/p2-orin.png" class="p2" />');
 	$('#gameCard').show();
+	$('#instruction').show().html('Press Space Bar to Roll Die');
 };
 
 $('html').on('keyup', function(el) {
@@ -140,13 +142,18 @@ $('html').on('keyup', function(el) {
 
 $('html').on('keydown', function(el) {
 	if( (el.keyCode == 32) || el.keyCode == 37 || el.keyCode == 38 || el.keyCode == 39 || el.keyCode == 40) {
-		el.preventDefault() }
+		el.preventDefault();
+		$('#instruction').hide(); }
 });
 
 
-$('body').keyup(function(el) { 
-	if ( el.keyCode == 32 ) { return dieRoll() } 
+$('body').keyup(function(el) {
+	if ( el.keyCode == 32 ) { dieRoll(); 
+		if (currRoll === 1) { $('#instruction').html('Use Arrow Keys to Move ' + currRoll + ' Space.') }
+		else { $('#instruction').show().html('Use Arrow Keys to Move ' + currRoll + ' Spaces.') }
+	} 
 });
+
 
 var dieRoll = function() {  
 	count = 0;
@@ -159,6 +166,7 @@ var dieRoll = function() {
 	else if (currRoll == 6) { $('#die').html('<img src="images/die-6.jpg" />') }
 };
 
+$('#instruction').draggable();
 $('#gameCard').draggable();
 $('aside').resizable(); //can't be draggable and resizable?? 
 
@@ -173,7 +181,8 @@ function checkAction() {
 			 $('aside').toggle(true);
 			 player.item1 = true;
 			 $('#cont').on('click', function() { $('aside').toggle(false) });
-			 nextPlayer(); }
+			 };
+			 nextPlayer();
 			}	
 		else if ( player.col == 6 && player.row == 7 ) { alert("You got a moment to rest and look at Harden's letter again... it definitely says 'something'"); nextPlayer(); }
 		else if ( player.col == 10 && player.row == 7 ) { alert("Welcome to the saloon"); nextPlayer(); }
@@ -187,7 +196,7 @@ function checkAction() {
 function nextPlayer() {
 	if (currRoll == count) { 
 		p1.turn = !p1.turn; 
-		alert('next player'); 
+		$('#instruction').html('Next Player - Press Space Bar to Roll Die').show(); 
 		whoseTurn();
 		}
 };
