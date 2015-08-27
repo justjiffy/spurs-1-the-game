@@ -40,6 +40,7 @@ function piece(col, row, img) {
 	this.item3 = false;
 	this.item4 = false;
 	this.finalAnswer = false;
+	this.imgStored = "";
 }
 
 p1 = new piece(0,3, '<img src="images/p1-sherrif.png" class="p1" />' );
@@ -50,46 +51,65 @@ p2 = new piece(0,3, '<img src="images/p2-orin.png" class="p2" />' );
 p1inArray = boardArray[p1.col][p1.row];
 p2inArray = boardArray[p2.col][p2.row];
 
-var whoseTurn = function() {
-	if (p1.turn===true) { player = p1; $('.p1').toggle(true); } 
+function whoseTurn() {
+	if (p1.turn===true) { player = p1 } 
 	else { player = p2 }
 };
 
 function prevMove() {
 	var arrayToChild = parseInt(player.col.toString()+player.row.toString());
-	$('#board').children()[arrayToChild].innerHTML = "";
+	if (p2.imgStored == p2.img) { $('#board').children()[arrayToChild].innerHTML = p2.img }
+	else if (p2.imgStored == p2.img) { $('#board').children()[arrayToChild].innerHTML = p1.img }
+	else { $('#board').children()[arrayToChild].innerHTML = "" } 
+	// (function() {
+	// if ( $('#board').children()[arrayToChild].innerHTML.indexOf('orin') != -1 ) { console.log('orin was there') }
+	// else if ($('#board').children()[arrayToChild].innerHTML.indexOf('sherrif') != -1) { console.log('sherrif was there') } 
+	// else if ( 1 == 1 ) { $('#board').children()[arrayToChild].innerHTML = "" } 	)}
 };
 
 function currMove() {
 	var arrayToChild = parseInt(player.col.toString() + player.row.toString());
+	console.log('p2.imgStored'); 	
 	$('#board').children()[arrayToChild].innerHTML = player.img;
 	whoseTurn();
+	p2.imgStored = "";
+	p1.imgStored = "";
 };
+
+function checkSquare() {
+	var arrayToChild = parseInt(player.col.toString() + player.row.toString());
+	if ( $('#board').children()[arrayToChild].innerHTML.indexOf('orin') != -1) { p2.imgStored = p2.img } 
+	else if ( $('#board').children()[arrayToChild].innerHTML.indexOf('sherrif' != -1) ) { p1.imgStored = p1.img }
+}; 	
 
 moveRight = function() {
 	if (player.row == 9) { $('#board').effect('shake'); }
-	else { prevMove(player);
+	else { checkSquare();
+		prevMove(player);
 		player.row++;
 		currMove(player); }
 };
 
 moveLeft = function() {
 	if (player.row === 0) { $('#board').effect('shake'); }
-	else { prevMove(player);
+	else { checkSquare();
+		prevMove(player);
 		player.row--;
 		currMove(player); }
 };
 
 moveUp = function() {
 	if (player.col === 0) { $('#board').effect('shake'); }
-	else { prevMove(player);
+	else { checkSquare();
+		prevMove(player);
 		player.col--;
 		currMove(player); }
 };
 
 moveDown = function() {
 	if (player.col === 22) { $('#board').effect('shake') }
-	else { prevMove(player);
+	else { checkSquare();
+		prevMove(player);
 		player.col++;
 		currMove(player); }
 };
@@ -97,9 +117,7 @@ moveDown = function() {
 var start = function() {
 	p1.turn = true;
 	whoseTurn();
-	$('#start').html(player.img);
-	whoseTurn();
-	$('#start').append(p2.img);
+	$('#start').html('<img src="images/p1-sherrif.png" class="p1" />').append('<img src="images/p2-orin.png" class="p2" />');
 	$('#gameCard').show();
 };
 
@@ -123,7 +141,6 @@ $('html').on('keyup', function(el) {
 		count++;
 		moveDown(player);
 		checkAction();
-
 	}
 });
 
@@ -153,23 +170,27 @@ $('aside').resizable(); //can't be draggable and resizable??
 
 //game board actions
 function checkAction() {
-	if ( currRoll == count && currRoll !== 0 ) {
-		console.log('next player!');
-		nextPlayer();
-		if ( player.col == 3 && player.row == 3 ) { 
-				$('#popUpContent').html("").append(" <p>You made it to the hospital, but Harden could barely speak. Shaken by the sight of his friend spontaneously combusting, he barely manages to slip you an almost indecipherable note before visitng hours end.</p> <h3>Acquired 1 Item: Harden's Letter</h3><br> <center><button id='cont'>CONTINUE</button></center> " );
-				$('aside').toggle(true);
-				player.item1 = true;
-				$('#cont').on('click', function() { $('aside').toggle(false) }); }
-		else if ( player.col == 6 && player.row == 7 ) { alert("You got a moment to rest and look at Harden's letter again... it definitely says 'something'") }
-		else if ( player.col == 10 && player.row == 7 ) { alert("Welcome to the saloon") }
-		else if ( player.col == 9 && player.row == 4 ) { alert("You showed the letter to a guy at the bar, and he was pretty sure he read: 'There's something...' but couldn't make out the rest") };
-	}
-};
+		if (currRoll == count) {
+			if ( player.col == 3 && player.row == 3 ) { 
+				if (player.item1 === false) {
+				 $('#popUpContent').html("").append(" <p>You made it to the hospital, but Harden could barely speak. Shaken by the sight of his friend spontaneously combusting, he barely manages to slip you an almost indecipherable note before visitng hours end.</p> <h3>Acquired 1 Item: Harden's Letter</h3><br> <center><button id='cont'>CONTINUE</button></center> " );
+				 $('aside').toggle(true);
+				 player.item1 = true;
+				 $('#cont').on('click', function() { $('aside').toggle(false) });
+				 nextPlayer(); }
+				}	
+			else if ( player.col == 6 && player.row == 7 ) { alert("You got a moment to rest and look at Harden's letter again... it definitely says 'something'"); nextPlayer(); }
+			else if ( player.col == 10 && player.row == 7 ) { alert("Welcome to the saloon"); nextPlayer(); }
+			else if ( player.col == 9 && player.row == 4 ) { alert("You showed the letter to a guy at the bar, and he was pretty sure he read: 'There's something...' but couldn't make out the rest"); nextPlayer(); }
+			else { nextPlayer() }
+		}
+}
+
+
 
 function nextPlayer() {
 	if (currRoll == count) { 
-		p1.turn = false; 
+		p1.turn = !p1.turn; 
 		alert('next player'); 
 		whoseTurn();
 		}
