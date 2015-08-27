@@ -43,7 +43,7 @@ function piece(col, row, img) {
 }
 
 p1 = new piece(0,3, '<img src="images/p1-sherrif.png" class="p1" />' );
-p2 = new piece(0,4, '<img src="images/p2-orin.png" class="p2" />' );
+p2 = new piece(0,3, '<img src="images/p2-orin.png" class="p2" />' );
 
 // printBoard(boardArray);
 
@@ -171,6 +171,7 @@ function nextPlayer() {
 	if (currRoll == count) { 
 		p1.turn = false; 
 		alert('next player'); 
+		whoseTurn();
 		}
 };
 
