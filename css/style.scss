@@ -183,6 +183,7 @@ aside {
 }
 
 #gameCard {
+	text-align: center;
 	padding: 100px 20px;
 	z-index: 0;
 	overflow: scroll;
@@ -222,3 +223,14 @@ aside {
 	background-color: transparent;
 }
 
+.items {
+	padding:0px 8px; 
+	margin: 5px;
+	border-radius: 50%;
+	border: 1px solid black;
+	display: inline;
+}
+
+.acquired {
+	background-color: black;
+}
