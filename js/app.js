@@ -39,8 +39,10 @@ function piece(col, row, img) {
 	this.item1 = false;
 	this.item2 = false;
 	this.item3 = false;
-	this.item4 = false;
-	this.finalAnswer = false;
+	this.clue1 = false;
+	this.clue2 = false;
+	this.clue3 = false;
+	this.clue4 = false;
 	this.imgStored = false;
 }
 
@@ -198,7 +200,7 @@ function checkAction() {
 			else if ( player.col == 6 && player.row == 7 ) { 
 				if (player.item1 === false) { 
 					$('#popUpContent').html("Have you visited Harden at the Hospital Yet? <br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); }
-					else { $('#popUpContent').html("You got a moment to rest and look at Harden's letter again... it definitely says: SOMETHING <br><br><br><br> <button id='cont'>Keep Playing</button> "); $('#cont').on('click', function() { $('aside').toggle(false) }); } 
+					else { $('#popUpContent').html("You got a moment to rest and look at Harden's letter again... it definitely says:<br><br> <h3>SOMETHING</h3> <br><br><br><br> <button id='cont'>Keep Playing</button> "); $('#cont').on('click', function() { $('aside').toggle(false) }); player.clue1 = true; } 
 				$('aside').toggle(true); 
 				nextPlayer(); 
 				}
@@ -229,7 +231,7 @@ function checkAction() {
 				if (player.item1 === false) {
 					$('#popUpContent').html("Have you visited Harden at the Hospital Yet? <br><br><br><br> <button id='cont'>Keep Playing</button> " ); 
 					$('#cont').on('click', function() { $('aside').toggle(false) }); }
-					else { $('#popUpContent').html("Glaring at the note on your long journey, you detected the first word of Harden's note: THERE'S <br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); }
+					else { $('#popUpContent').html("Glaring at the note on your long journey, you detected the first word of Harden's note: <br><br><h3>THERE'S</h3> <br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); player.clue2 = true; }
 			$('aside').toggle(true); 
 			nextPlayer(); 
 			}
@@ -240,7 +242,7 @@ function checkAction() {
 				if (player.item1 === false) {
 					$('#popUpContent').html("Have you visited Harden at the Hospital Yet? <br><br><br><br> <button id='cont'>Keep Playing</button> " ); 
 					$('#cont').on('click', function() { $('aside').toggle(false) }); }
-					else { $('#popUpContent').html("After a few drink at the bar, your blurred vision and dulled senses deciphered: IN THE <br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); }
+					else { $('#popUpContent').html("After a few drink at the bar, your blurred vision and dulled senses deciphered: <br><br> <h3>IN THE</h3> <br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); player.clue3 = true; }
 			$('aside').toggle(true); 
 			nextPlayer(); 
 			}
@@ -268,7 +270,7 @@ function checkAction() {
 				if (player.item1 === false) {
 					$('#popUpContent').html("Have you visited Harden at the Hospital Yet? <br><br><br><br> <button id='cont'>Keep Playing</button> " ); 
 					$('#cont').on('click', function() { $('aside').toggle(false) }); }
-					else { $('#popUpContent').html("It came to you, as if in a dream. After a good nights rest at the Inn, you were able to make out the last word: WATER<br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); }
+					else { $('#popUpContent').html("It came to you, as if in a dream. After a good nights rest at the Inn, you were able to make out the last word:<br><br> <h3>WATER</h3> <br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); player.clue4 = true }
 			$('aside').toggle(true); 
 			nextPlayer(); 
 			}
@@ -279,7 +281,11 @@ function checkAction() {
 				if (player.item1 === false) {
 					$('#popUpContent').html("Have you visited Harden at the Hospital Yet? <br><br><br><br> <button id='cont'>Keep Playing</button> " ); 
 					$('#cont').on('click', function() { $('aside').toggle(false) }); }
-					else { $('#popUpContent').html("The rumors are true... Ben Rooser spontaneously combust, and the only thing Harden can say is: <br><br>THERE'S SOMETHING IN THE WATER<br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); }
+					else if ( player.clue4 === false) { $('#popUpContent').html("<br><br><p>What does that last word say!?</p><br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); }
+					else if ( player.clue3 === false) { $('#popUpContent').html("<br><br><p>What does Harden's note say!?</p><br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); }
+					else if ( player.clue2 === false) { $('#popUpContent').html("<br><br><p>What does Harden's note say!?</p><br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); }
+					else if ( player.clue1 === false) { $('#popUpContent').html("<br><br><p>What does Harden's note say!?</p><br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); }
+					else { $('#popUpContent').html("The rumors are true... Ben Rooser spontaneously combust, and the only thing Harden can say is: <br><br><h3>THERE'S SOMETHING IN THE WATER</h3><br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); }
 			$('aside').toggle(true); 
 			nextPlayer(); 
 			}
@@ -293,10 +299,16 @@ function checkAction() {
 			 $('#cont').on('click', function() { $('aside').toggle(false) });
 			 nextPlayer();
 			 }
-			 else if (player.item1 === true && player.item2 === true && player.item3 === true && player.item4 === true ) { 
+			 else if (player.item1 === true && player.item2 === true && player.item3 === true && player.clue1 === true && player.clue2 === true && player.clue3 === true && player.clue4 === true ) { 
 			 	 $('#popUpContent').html("").append(" <br><br><p>Henrietta and Simon are in the garden when you arrive, and she invites you in. She asks pulls you aside ask asks: <br> What happened to Simon's father? <br><br> You give her Harden's note and whisoer a verbal translation:<br><br> There's something in the water <br><br> Henrietta lets you stay at her place for now. </p><br><br><h3>FOUND SIMON, MYSTERY SOLVED... in part. </h3><br><br><p>Explore more at:<br>www.rundownhillmusic.com</p>" );
 			 	 $('aside').toggle(true);
-				};
+				}
+			else if (player.item1 === true && player.item2 === true && player.item3 === true ) { 
+			 	 $('#popUpContent').html("").append(" <br><br><p>Henrietta and Simon are in the garden when you arrive, and she invites you in. She asks pulls you aside ask asks: <br> What happened to Simon's father? <br><br> You give her Harden's note but she can't read it either. She asks if you'll go back into town and find answers.</p><br><br><center><button id='cont'>CONTINUE</button></center> " );
+				 $('aside').toggle(true);
+				 $('#cont').on('click', function() { $('aside').toggle(false) });
+				 nextPlayer();
+				}	
 			}
 	else { nextPlayer(); }
 	}
