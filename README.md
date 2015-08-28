@@ -20,4 +20,3 @@ Incorporates sematic HTML5 elements, constructor functions and other cool stuff.
 ##MORE:
 
 * www.rundownhillmusic.com
-* 

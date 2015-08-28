@@ -113,7 +113,7 @@ moveDown = function() {
 };
 
 var start1 = function() {
-	$('#popUpContent').html('<p>Hey there lonely stranger, <br> This game is currenly only available in two player mode. Channel your alter ego and click below to keep playing.</p><br><br> <button onClick="start2();">Keep Playing</button> ' );
+	$('#popUpContent').html('<br><br><br><br><p>Hey there lonely stranger, <br> This game is currenly only available in two player mode. <br><br>Channel your alter ego, hit refresh and double your luck playing two player.</p><br><br>' );
 };
 
 var start2 = function() {
@@ -186,7 +186,7 @@ function checkAction() {
 		//HOSPITAL
 		if ( player.col == 3 && player.row == 3 ) { 
 			if (player.item1 === false) {
-			 $('#popUpContent').html("").append(" <br><br><p>You made it to the hospital, but Harden could barely speak. Shaken by the sight of his friend spontaneously combusting, he barely manages to slip you an almost indecipherable note before visitng hours end.</p><br><br><h3>Acquired 1 Item: Harden's Letter</h3><br><br><p>If you can make it through Adam's Ale to the Town Center, maybe you'll have more luck</p><br><br><center><button id='cont'>CONTINUE</button></center> " );
+			 $('#popUpContent').html("").append(" <br><br><p>You made it to the hospital, but Harden could barely speak. Shaken by the sight of his friend spontaneously combusting, he barely manages to slip you an mearly indecipherable note before visitng hours end.</p><br><br><h3>Acquired 1 Item: Harden's Letter</h3><br><br><p>If you can make it through Adam's Ale to the Town Center, maybe you'll have more luck</p><br><br><center><button id='cont'>CONTINUE</button></center> " );
 			 $('aside').toggle(true);
 			 player.item1 = true;
 			 if (player == p1) { $('#p1item1').addClass('acquired') }
@@ -250,7 +250,7 @@ function checkAction() {
 				if (player.item1 === false) {
 					$('#popUpContent').html("Have you visited Harden at the Hospital Yet? <br><br><br><br> <button id='cont'>Keep Playing</button> " ); 
 					$('#cont').on('click', function() { $('aside').toggle(false) }); }
-					else { $('#popUpContent').html("After a few drink at the bar, your blurred vision and dulled senses deciphered: <br><br> <h3>IN THE</h3> <br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); player.clue3 = true; 
+					else { $('#popUpContent').html("After a few drinks at the bar, your blurred vision and dulled senses deciphered: <br><br> <h3>IN THE</h3> <br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); player.clue3 = true; 
 					if (player == p1) { $('#p1clue3').addClass('acquired') }
 			 			else if (player == p2) { $('#p2clue3').addClass('acquired') } };
 			$('aside').toggle(true); 
