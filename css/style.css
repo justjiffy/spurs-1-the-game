@@ -114,6 +114,7 @@ button {
   background-size: 180%; }
 
 #finish {
+  background-image: url("../images/henriettas-bg.jpg");
   background-color: red; }
 
 .qMark {

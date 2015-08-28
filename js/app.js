@@ -182,6 +182,7 @@ function checkAction() {
 	p2.imgStored = false;
 	p1.imgStored = false;
 	if (currRoll == count) {
+		//HOSPITAL
 		if ( player.col == 3 && player.row == 3 ) { 
 			if (player.item1 === false) {
 			 $('#popUpContent').html("").append(" <br><br><p>You made it to the hospital, but Harden could barely speak. Shaken by the sight of his friend spontaneously combusting, he barely manages to slip you an almost indecipherable note before visitng hours end.</p><br><br><h3>Acquired 1 Item: Harden's Letter</h3><br><br><p>If you can make it through Adam's Ale to the Town Center, maybe you'll have more luck</p><br><br><center><button id='cont'>CONTINUE</button></center> " );
@@ -191,16 +192,54 @@ function checkAction() {
 			 };
 			 nextPlayer();
 			}	
-		else if ( player.col == 6 && player.row == 7 ) { 
-			if (player.item1 === false) { 
-				$('#popUpContent').html("Have you visited Harden at the Hospital Yet? <br><br><br><br> <button id='cont'>Keep Playing</button> " ); 
-				$('#cont').on('click', function() { $('aside').toggle(false) }); }
-				else { $('#popUpContent').html("You got a moment to rest and look at Harden's letter again... it definitely says 'something'"); }
+		
+		//FIRST QUESTION MARK	
+		
+			else if ( player.col == 6 && player.row == 7 ) { 
+				if (player.item1 === false) { 
+					$('#popUpContent').html("Have you visited Harden at the Hospital Yet? <br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); }
+					else { $('#popUpContent').html("You got a moment to rest and look at Harden's letter again... it definitely says: SOMETHING <br><br><br><br> <button id='cont'>Keep Playing</button> "); $('#cont').on('click', function() { $('aside').toggle(false) }); } 
+				$('aside').toggle(true); 
+				nextPlayer(); 
+				}
+		
+		
+		//SALOON	
+		
+		else if ( player.col == 10 && player.row == 7 ) { 
+			if (player.item2 === false) {
+			 $('#popUpContent').html("").append(" <br><br><p>You try to relax and get your mind off things, but everyone at the bar is gossiping about the new railline, Ben Rooster setting fire, his son now missing...?! Maybe someone at Town's Center can answer some questions.</p><br><br><h3>Acquired 1 Item: Harden's Letter</h3><br><br><p>If you can make it through Adam's Ale to the Town Center, maybe you'll have more luck</p><br><br><center><button id='cont'>CONTINUE</button></center> " );
+			 $('aside').toggle(true);
+			 player.item2 = true;
+			 $('#cont').on('click', function() { $('aside').toggle(false) });
+			 }
+			 else { 
+			 	 $('#popUpContent').html("").append(" <br><br><p>You better get out of here and on to Town's Center!</p><br><br><h3>Acquired 1 Item: Harden's Letter</h3><br><br><p>If you can make it through Adam's Ale to the Town Center, maybe you'll have more luck</p><br><br><center><button id='cont'>CONTINUE</button></center> " );
+			 		$('aside').toggle(true);
+				 player.item2 = true;
+				 $('#cont').on('click', function() { $('aside').toggle(false) });
+				};
+			 nextPlayer();
+			}
+		
+		
+		//SECOND QUESTION MARK
+		
+			else if ( player.col == 9 && player.row == 4 ) { 
+				if (player.item1 === false) {
+					$('#popUpContent').html("Have you visited Harden at the Hospital Yet? <br><br><br><br> <button id='cont'>Keep Playing</button> " ); 
+					$('#cont').on('click', function() { $('aside').toggle(false) }); }
+					else { $('#popUpContent').html("After a few drink at the bar, your blurred vision and dulled senses detected the first word of Harden's note: THERE'S" ); }
 			$('aside').toggle(true); 
 			nextPlayer(); 
-			}	
-		else if ( player.col == 10 && player.row == 7 ) { alert("Welcome to the saloon"); nextPlayer(); }
-		else if ( player.col == 9 && player.row == 4 ) { alert("You showed the letter to a guy at the bar, and he was pretty sure he read: 'There's something...' but couldn't make out the rest"); nextPlayer(); }
+			}
+
+		//THIRD QUESTION MARK
+		
+		else if ( player.col == 13  && player.row == 5 ) { }
+		
+		//THE INN
+		
 		else { nextPlayer() }
 	}
 }
