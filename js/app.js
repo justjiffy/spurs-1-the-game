@@ -300,7 +300,7 @@ function checkAction() {
 			 nextPlayer();
 			 }
 			 else if (player.item1 === true && player.item2 === true && player.item3 === true && player.clue1 === true && player.clue2 === true && player.clue3 === true && player.clue4 === true ) { 
-			 	 $('#popUpContent').html("").append(" <br><br><p>Henrietta and Simon are in the garden when you arrive, and she invites you in. She asks pulls you aside ask asks: <br> What happened to Simon's father? <br><br> You give her Harden's note and whisoer a verbal translation:<br><br> There's something in the water <br><br> Henrietta lets you stay at her place for now. </p><br><br><h3>FOUND SIMON, MYSTERY SOLVED... in part. </h3><br><br><p>Explore more at:<br>www.rundownhillmusic.com</p>" );
+			 	 $('#popUpContent').html("").append(" <br><br><p>Henrietta and Simon are in the garden when you arrive, and she invites you in. She asks pulls you aside ask asks: <br> What happened to Simon's father? <br><br> You give her Harden's note and whisoer a verbal translation:<br><br> There's something in the water <br><br> Henrietta lets you stay at her place for now. </p><br><br><h3>FOUND SIMON, MYSTERY SOLVED... in part. </h3><br><br><p>Explore more at:<br>www.rundownhillmusic.com</p><br><br><br><br>" );
 			 	 $('aside').toggle(true);
 				}
 			else if (player.item1 === true && player.item2 === true && player.item3 === true ) { 
