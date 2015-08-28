@@ -56,8 +56,8 @@ p1inArray = boardArray[p1.col][p1.row];
 p2inArray = boardArray[p2.col][p2.row];
 
 function whoseTurn() {
-	if (p1.turn===true) { player = p1 } 
-	else { player = p2 }
+	if (p1.turn===true) { player = p1; $('#p1-turn').addClass('myturn'); $('#p2-turn').removeClass('myturn'); } 
+	else { player = p2; $('#p2-turn').addClass('myturn'); $('#p1-turn').removeClass('myturn'); }
 	$('gameCard').html(player);
 };
 
