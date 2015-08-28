@@ -190,7 +190,7 @@ function checkAction() {
 			 $('aside').toggle(true);
 			 player.item1 = true;
 			 if (player == p1) { $('#p1item1').addClass('acquired') }
-			 	else { $('p2item1').addClass('acquired') };
+			 	else if (player == p2) { $('#p2item1').addClass('acquired') };
 			 $('#cont').on('click', function() { $('aside').toggle(false) });
 			 };
 			 nextPlayer();
@@ -203,7 +203,7 @@ function checkAction() {
 					$('#popUpContent').html("Have you visited Harden at the Hospital Yet? <br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); }
 				else { $('#popUpContent').html("You got a moment to rest and look at Harden's letter again... it definitely says:<br><br> <h3>SOMETHING</h3> <br><br><br><br> <button id='cont'>Keep Playing</button> "); $('#cont').on('click', function() { $('aside').toggle(false) }); player.clue1 = true; 
 						if (player == p1) { $('#p1clue1').addClass('acquired') }
-			 			else { $('p2clue1').addClass('acquired') }; 
+			 			else if (player == p2) { $('#p2clue1').addClass('acquired') }; 
 			 		} 
 				$('aside').toggle(true); 
 				nextPlayer(); 
@@ -218,7 +218,7 @@ function checkAction() {
 			 $('aside').toggle(true);
 			 player.item2 = true;
 			 if (player == p1) { $('#p1item2').addClass('acquired') }
-			 	else { $('p2item2').addClass('acquired') };
+			 	else if (player == p2) { $('#p2item2').addClass('acquired') };
 			 $('#cont').on('click', function() { $('aside').toggle(false) });
 			 }
 			 else { 
@@ -239,7 +239,7 @@ function checkAction() {
 					$('#cont').on('click', function() { $('aside').toggle(false) }); }
 				else { $('#popUpContent').html("Glaring at the note on your long journey, you detected the first word of Harden's note: <br><br><h3>THERE'S</h3> <br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); player.clue2 = true; 
 					if (player == p1) { $('#p1clue2').addClass('acquired') }
-			 			else { $('p2clue2').addClass('acquired') } };
+			 			else if (player == p2) { $('#p2clue2').addClass('acquired') } };
 			$('aside').toggle(true); 
 			nextPlayer(); 
 			}
@@ -252,7 +252,7 @@ function checkAction() {
 					$('#cont').on('click', function() { $('aside').toggle(false) }); }
 					else { $('#popUpContent').html("After a few drink at the bar, your blurred vision and dulled senses deciphered: <br><br> <h3>IN THE</h3> <br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); player.clue3 = true; 
 					if (player == p1) { $('#p1clue3').addClass('acquired') }
-			 			else { $('p2clue3').addClass('acquired') } };
+			 			else if (player == p2) { $('#p2clue3').addClass('acquired') } };
 			$('aside').toggle(true); 
 			nextPlayer(); 
 			}
@@ -270,7 +270,7 @@ function checkAction() {
 			 	 $('aside').toggle(true);
 				 player.item3 = true;
 				 if (player == p1) { $('#p1item3').addClass('acquired') }
-			 	else { $('p2item3').addClass('acquired') };
+			 		else if (player == p2) { $('#p2item3').addClass('acquired') };
 				 $('#cont').on('click', function() { $('aside').toggle(false) });
 				};
 			 nextPlayer();
@@ -284,7 +284,7 @@ function checkAction() {
 					$('#cont').on('click', function() { $('aside').toggle(false) }); }
 					else { $('#popUpContent').html("It came to you, as if in a dream. After a good nights rest at the Inn, you were able to make out the last word:<br><br> <h3>WATER</h3> <br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); player.clue4 = true 
 					if (player == p1) { $('#p1clue4').addClass('acquired') }
-			 			else { $('p2clue4').addClass('acquired') } };
+			 			else if (player == p2) { $('#p2clue4').addClass('acquired') } };
 			$('aside').toggle(true); 
 			nextPlayer(); 
 			}
