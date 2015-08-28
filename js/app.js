@@ -1,3 +1,5 @@
+$(function() { 
+
 var boardArray = [["X", "X", "X", "S", , "", "", "X", "X", "X"],   //row 1  (s = start)
   [ "X", "X", "X", "", "X", "X", "", "X", "X", "X"], //row 2	
   [ "X", "X", "X", "", "X", "X", "", "X", "X", "X"], //row 3
@@ -43,7 +45,6 @@ function piece(col, row, img) {
 	this.clue2 = false;
 	this.clue3 = false;
 	this.clue4 = false;
-	this.imgStored = false;
 }
 
 p1 = new piece(0,3, '<img src="images/p1-sherrif.png" id="p1" />' );
@@ -181,8 +182,6 @@ $('aside').resizable(); //can't be draggable and resizable??
 
 //game board actions
 function checkAction() {
-	p2.imgStored = false;
-	p1.imgStored = false;
 	if (currRoll == count) {
 		//HOSPITAL
 		if ( player.col == 3 && player.row == 3 ) { 
@@ -190,6 +189,8 @@ function checkAction() {
 			 $('#popUpContent').html("").append(" <br><br><p>You made it to the hospital, but Harden could barely speak. Shaken by the sight of his friend spontaneously combusting, he barely manages to slip you an almost indecipherable note before visitng hours end.</p><br><br><h3>Acquired 1 Item: Harden's Letter</h3><br><br><p>If you can make it through Adam's Ale to the Town Center, maybe you'll have more luck</p><br><br><center><button id='cont'>CONTINUE</button></center> " );
 			 $('aside').toggle(true);
 			 player.item1 = true;
+			 if (player == p1) { $('#p1item1').addClass('acquired') }
+			 	else { $('p2item1').addClass('acquired') };
 			 $('#cont').on('click', function() { $('aside').toggle(false) });
 			 };
 			 nextPlayer();
@@ -200,7 +201,10 @@ function checkAction() {
 			else if ( player.col == 6 && player.row == 7 ) { 
 				if (player.item1 === false) { 
 					$('#popUpContent').html("Have you visited Harden at the Hospital Yet? <br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); }
-					else { $('#popUpContent').html("You got a moment to rest and look at Harden's letter again... it definitely says:<br><br> <h3>SOMETHING</h3> <br><br><br><br> <button id='cont'>Keep Playing</button> "); $('#cont').on('click', function() { $('aside').toggle(false) }); player.clue1 = true; } 
+				else { $('#popUpContent').html("You got a moment to rest and look at Harden's letter again... it definitely says:<br><br> <h3>SOMETHING</h3> <br><br><br><br> <button id='cont'>Keep Playing</button> "); $('#cont').on('click', function() { $('aside').toggle(false) }); player.clue1 = true; 
+						if (player == p1) { $('#p1clue1').addClass('acquired') }
+			 			else { $('p2clue1').addClass('acquired') }; 
+			 		} 
 				$('aside').toggle(true); 
 				nextPlayer(); 
 				}
@@ -213,6 +217,8 @@ function checkAction() {
 			 $('#popUpContent').html("").append(" <br><br><p>You try to relax and get your mind off things, but everyone at the bar is gossiping about the new railline, Ben Rooster setting fire, his son now missing...?! Maybe someone at Town's Center can answer some questions. Better get a jug to go... </p><br><br><h3>Acquired 1 Item: A fifth of Whisky</h3><br><br><p>Onward to Town!</p><br><br><center><button id='cont'>CONTINUE</button></center> " );
 			 $('aside').toggle(true);
 			 player.item2 = true;
+			 if (player == p1) { $('#p1item2').addClass('acquired') }
+			 	else { $('p2item2').addClass('acquired') };
 			 $('#cont').on('click', function() { $('aside').toggle(false) });
 			 }
 			 else { 
@@ -231,7 +237,9 @@ function checkAction() {
 				if (player.item1 === false) {
 					$('#popUpContent').html("Have you visited Harden at the Hospital Yet? <br><br><br><br> <button id='cont'>Keep Playing</button> " ); 
 					$('#cont').on('click', function() { $('aside').toggle(false) }); }
-					else { $('#popUpContent').html("Glaring at the note on your long journey, you detected the first word of Harden's note: <br><br><h3>THERE'S</h3> <br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); player.clue2 = true; }
+				else { $('#popUpContent').html("Glaring at the note on your long journey, you detected the first word of Harden's note: <br><br><h3>THERE'S</h3> <br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); player.clue2 = true; 
+					if (player == p1) { $('#p1clue2').addClass('acquired') }
+			 			else { $('p2clue2').addClass('acquired') } };
 			$('aside').toggle(true); 
 			nextPlayer(); 
 			}
@@ -242,7 +250,9 @@ function checkAction() {
 				if (player.item1 === false) {
 					$('#popUpContent').html("Have you visited Harden at the Hospital Yet? <br><br><br><br> <button id='cont'>Keep Playing</button> " ); 
 					$('#cont').on('click', function() { $('aside').toggle(false) }); }
-					else { $('#popUpContent').html("After a few drink at the bar, your blurred vision and dulled senses deciphered: <br><br> <h3>IN THE</h3> <br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); player.clue3 = true; }
+					else { $('#popUpContent').html("After a few drink at the bar, your blurred vision and dulled senses deciphered: <br><br> <h3>IN THE</h3> <br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); player.clue3 = true; 
+					if (player == p1) { $('#p1clue3').addClass('acquired') }
+			 			else { $('p2clue3').addClass('acquired') } };
 			$('aside').toggle(true); 
 			nextPlayer(); 
 			}
@@ -259,6 +269,8 @@ function checkAction() {
 			 	 $('#popUpContent').html("").append(" <br><br><p>The four company men are in their usual spot, playing cards at the Inn. They know where Simon, Ben's son, is hiding and will give you the location if you give them your fifth of whisky!!</p><br><br><h3>Exchange 1 Item: Whisky for Henrietta's Address</h3><br><br><p>It's a long journey ahead, keep moving!</p><br><br><center><button id='cont'>CONTINUE</button></center> " );
 			 	 $('aside').toggle(true);
 				 player.item3 = true;
+				 if (player == p1) { $('#p1item3').addClass('acquired') }
+			 	else { $('p2item3').addClass('acquired') };
 				 $('#cont').on('click', function() { $('aside').toggle(false) });
 				};
 			 nextPlayer();
@@ -270,7 +282,9 @@ function checkAction() {
 				if (player.item1 === false) {
 					$('#popUpContent').html("Have you visited Harden at the Hospital Yet? <br><br><br><br> <button id='cont'>Keep Playing</button> " ); 
 					$('#cont').on('click', function() { $('aside').toggle(false) }); }
-					else { $('#popUpContent').html("It came to you, as if in a dream. After a good nights rest at the Inn, you were able to make out the last word:<br><br> <h3>WATER</h3> <br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); player.clue4 = true }
+					else { $('#popUpContent').html("It came to you, as if in a dream. After a good nights rest at the Inn, you were able to make out the last word:<br><br> <h3>WATER</h3> <br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); player.clue4 = true 
+					if (player == p1) { $('#p1clue4').addClass('acquired') }
+			 			else { $('p2clue4').addClass('acquired') } };
 			$('aside').toggle(true); 
 			nextPlayer(); 
 			}
@@ -330,3 +344,7 @@ $('#play1player').on('click', function() {
 $('#play2player').on('click', function() {
 	start2();
 });
+
+});
+
+
