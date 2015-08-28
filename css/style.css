@@ -99,7 +99,7 @@ button {
   z-index: 0; }
 
 #start {
-  background-color: green; }
+  background-image: url("../images/start.jpg"); }
 
 #hospital {
   background-image: url("http://i.istockimg.com/file_thumbview_approve/20889576/6/stock-illustration-20889576-hospital-bed-sketch.jpg");
