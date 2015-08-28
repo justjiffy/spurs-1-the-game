@@ -1,0 +1,224 @@
+body {
+	background-color: black
+}
+
+main {
+	height: 2000px; 
+	width: 850px;
+	background-color: transparent;
+	margin-left: 5%;
+	background-image: url('../images/background.jpg');
+	background-color: black;
+	background-repeat: no-repeat;	
+	background-position: top center;
+	background-size: 100%
+}
+
+footer {
+	padding-right: 20%;
+	font-family: Tahoma, Arial;
+	font-size: 14px;
+	text-align: center;
+	color: white;
+	background-color: rgba(0,0,0,0.7)
+}
+
+h1 {
+	-webkit-margin-before: 0.2em;
+    -webkit-margin-after: 0.2em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+	position: fixed;
+	top: 1px;
+	right: 10px;
+	color: white;
+	text-align: right;
+	padding: 0px 75px;
+	z-index: 10;
+	font-size: 77px;
+	font-family: 'Birch W03';
+	text-shadow:5px -2px 0 #000, 
+				5px 2px 0 #000,
+				 -1px -1px 0 #000,  
+    			  1px -1px 0 #000,
+  				 -1px 1px 0 #000,
+     			  1px 1px 0 #000;
+}
+
+h2 {
+	-webkit-margin-before: 0.2em;
+    -webkit-margin-after: 0.2em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+	color: black;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	z-index: 1;
+	font-size: 77px;
+	font-family: 'Birch W03';
+}
+
+h3 {
+	font-family: 'Birch W03';
+	font-size: 40px;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+p {
+	font-family: 'Birch W03';
+	padding: 0;
+	margin: 0;
+	font-size: 28px;
+	text-align: center;
+}
+
+button {
+	background-color: white; 
+	border: 3px solid black;
+	border-radius: 5px; 
+	margin: 0 auto;
+}
+
+#die {
+	height: 75px;
+	width: 75px;
+	position: fixed;
+	bottom: 25px;
+	left: 25px;
+	background-color: black;
+	z-index: 1;
+	line-height: 75px;
+	vertical-align: center;
+	text-align: center;
+	border-radius: 10px; 
+}
+
+#board {
+  position: absolute;
+  top: 150px;
+  left: 20%;
+  width: 770px;
+  height: 1617px; 
+  background-color: transparent;
+}
+
+#p1 {
+	float: left;
+	z-index: 0;
+}
+
+#p2 {
+	float: left;
+	z-index: 0;
+}
+
+#start {
+	background-color: green;
+}
+
+#hospital {
+	background-image: url('http://i.istockimg.com/file_thumbview_approve/20889576/6/stock-illustration-20889576-hospital-bed-sketch.jpg');
+	background-size: 120%;
+}
+
+#saloon {
+	background-image: url('https://s-media-cache-ak0.pinimg.com/236x/c7/43/25/c743252c20c52791578df84d5097cddf.jpg');
+	background-size: 100%;
+}
+
+#inn {
+	background-image: url('http://etc.usf.edu/clipart/65200/65220/65220_inn_mth.gif');
+	background-size: 180%;
+}
+
+#finish {
+	background-image: url('../images/henriettas-bg.jpg');
+	background-color: red;
+}
+
+.qMark {
+	background-image: url('../images/qmark.png')
+}
+
+aside {
+	padding-top: 50px;
+	z-index: 1;
+	border-radius: 20px;
+	overflow: scroll;
+	display: block;
+	width: 80%;
+	position: fixed;
+	top: 10%;
+	left: 5%;
+	height: 80vh;
+	background-color: black;
+	background-image: url('../images/aside-bg.jpg');
+	background-position: center;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+#instruction {
+	text-align: center;
+	font-size: 28px;
+	font-family: 'Birch W03';
+	border-radius: 10px;
+	overflow: hidden;
+	display: none;
+	position: fixed;
+	top: 5%;
+	left: 0%;
+	height: 100px;
+	width: 30%;
+	line-height: 100px;
+	vertical-align: center;
+	background-color: black;
+	background-image: url('../images/aside-bg.jpg');
+	background-position: center;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+#gameCard {
+	padding: 100px 20px;
+	z-index: 0;
+	overflow: scroll;
+	display: none;
+	width: 20%;
+	position: fixed; 
+	top: 10%;
+	right: 5%;
+	height: 90vh;
+	background-color: black;
+	background-image: url('../images/gamecard-bg.jpg');
+	background-position: center;
+	background-size: 100% 100%;
+	background-repeat: no-repeat; 
+	border-radius: 20px;
+}
+
+#popUpContent {
+	margin: 20px 125px;
+	text-align: center;
+	font-family: 'Birch W03';
+	font-size: 40px;
+	text-align: center;
+}
+
+.square {
+	height: 70px; 	
+	width: 70px;
+	background-color: rgba(255,255,255,1);
+	border: 1px solid black;
+	float: left;
+	overflow: hidden;	
+}
+
+.x {
+	border: 1px solid transparent;
+	background-color: transparent;
+}
+

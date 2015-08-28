@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--jQuery links-->
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+		<!--Birch Font -->
+		<style type="text/css">
+
+		@import url("http://fast.fonts.net/t/1.css?apiType=css&projectid=e029b883-17b4-436c-89aa-29bfd214dc52");
+		@font-face{
+		font-family:"Birch W03_n7";
+		src:url("Fonts/c2085131-d065-4404-8de6-027fe55b1327.eot?#iefix") format("eot")
+		}
+		@font-face{
+		font-family:"Birch W03";
+		src:url("Fonts/c2085131-d065-4404-8de6-027fe55b1327.eot?#iefix");
+		src:url("Fonts/c2085131-d065-4404-8de6-027fe55b1327.eot?#iefix") format("eot"),url("Fonts/17ba5f0c-38f6-4e1f-9504-bfec342971bc.woff2") format("woff2"),url("Fonts/5b6ba774-97f8-49fe-8a1c-e98578f0cdf2.woff") format("woff"),url("Fonts/401920bd-c267-4f08-b3c1-9c8733c99d6a.ttf") format("truetype"),url("Fonts/38f94cbb-caf2-463b-8840-e11382b740ab.svg#38f94cbb-caf2-463b-8840-e11382b740ab") format("svg");
+		font-weight: 700;
+		font-style: normal;
+		}
+		</style>
+
+	<title>Kilbourn the Game</title>
+
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+
+<body>
+
+<header>
+	<h1>SPURS #1 - The Game</h1>
+</header>
+
+<main> 
+
+  <div id="die"></div>
+  	
+  <div id="board">
+	 <!-- LEVEL 1 -->
+		<!--row 1 --> 
+		<div class="level1 square x" ></div>
+		<div class="level1 square x"></div>
+		<div class="level1 square x"></div>
+		<div id="start" class="level1 square"></div>
+		<div class="level1 square"></div>
+		<div class="level1 square"></div>
+		<div class="level1 square"></div>
+		<div class="level1 square x"></div>
+		<div class="level1 square x"></div>
+		<div class="level1 square x"></div>
+
+		<!--row 2 -->
+		<div class="level1 square x"></div>
+		<div class="level1 square x"></div>
+		<div class="level1 square x"></div>
+		<div class="level1 square"></div>
+		<div class="level1 square x"></div>
+		<div class="level1 square x"></div>
+		<div class="level1 square"></div>
+		<div class="level1 square x"></div>
+		<div class="level1 square x"></div>
+		<div class="level1 square x"></div>
+
+		<!--row 3 -->
+		<div class="level1 square x"></div>
+		<div class="level1 square x"></div>
+		<div class="level1 square x"></div>
+		<div class="level1 square"></div>
+		<div class="level1 square x"></div>
+		<div class="level1 square x"></div>
+		<div class="level1 square"></div>
+		<div class="level1 square x"></div>
+		<div class="level1 square x"></div>
+		<div class="level1 square x"></div>
+
+		<!--row 4 -->
+		<div class="level1 square x"></div>
+		<div class="level1 square x"></div>
+		<div class="level1 square x"></div>
+		<div id="hospital" class="level1 square"></div>
+		<div class="level1 square"></div>
+		<div class="level1 square"></div>
+		<div class="level1 square"></div>
+		<div class="level1 square x"></div>
+		<div class="level1 square x"></div>
+		<div class="level1 square x"></div>
+			
+
+			<!-- LEVEL 2 -->
+				<!--row 5 *BRIDGE* -->
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+
+				<!--row 6 *BRIDGE*--> 
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+
+				<!--row 7 -->
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square"></div>
+				<div class="level2 square"></div>
+				<div class="level2 square"></div>
+				<div class="level2 square qMark"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+
+				<!--row 8 -->
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+
+				<!--row 9 -->
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+
+
+				<!--row 10-->
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square qMark"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+
+				<!--row 11 --> 
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square"></div>
+				<div class="level2 square"></div>
+				<div class="level2 square"></div>
+				<div id="saloon" class="level2 square"></div>
+				<div class="level2 square x"></div>
+				<div class="level2 square x"></div>
+
+
+				 <!-- LEVEL 3 -->
+						<!--row 12 *BRIDGE* -->
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+
+						<!--row 13 *BRIDGE* --> 
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+
+						<!--row 14 -->
+						<div id="inn" class="level3 square"></div>
+						<div class="level3 square"></div>
+						<div class="level3 square"></div>
+						<div class="level3 square"></div>
+						<div class="level3 square"></div>
+						<div class="level3 square qMark"></div>
+						<div class="level3 square"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+
+						<!--row 15 -->
+						<div class="level3 square"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+
+						<!--row 16 -->
+						<div class="level3 square"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+
+						<!--row 17 -->
+						<div class="level3 square"></div>
+						<div class="level3 square"></div>
+						<div class="level3 square qMark"></div>
+						<div class="level3 square"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+						<div class="level3 square x"></div>
+							
+						
+						<!-- LEVEL 4 -->
+								<!--row 18 *BRIDGE* --> 
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+
+								<!--row 19 *BRIDGE* -->
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+
+								<!--row 20 --> 
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square qMark"></div>
+								<div class="level4 square"></div>
+								<div class="level4 square"></div>
+								<div class="level4 square"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+
+								<!--row 21 -->
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+
+								<!--row 22 -->
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+
+								<!--row 23 -->
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square"></div>
+								<div class="level4 square"></div>
+								<div class="level4 square"></div>
+								<div id="finish" class="level4 square"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+								<div class="level4 square x"></div>
+		  </div> <!--end of board -->
+</main>
+
+<aside>
+	<div id="popUpContent">
+	<h2>HELP!!!</h2>
+	<p>Terrible things are happening in the town of Kilbourn. There was a freak mining accident that the authorities are keeping under wraps. Rumor has is Ben Rooster, one of the miners, spontaneously combust. His home was also set ablaze and his son, Simon, has been reported missing</p><br><br>
+
+	<h3>Help find Simon and figure out what happened in the mine!<h3><br>
+
+	<button id="play1player">1 PLAYER</button> <button id="play2player">2 PLAYER</button>
+	</div>
+</aside>
+
+<div id="instruction">
+	</div>
+
+<div id="gameCard">
+	<div id="p1-status">
+		<h3>PLAYER 1</h3>
+		<p>The Hospital</p>
+		<p>The Saloon</p>
+		<p>The Inn</p>
+		<p>Henrietta's</p>
+	</div>
+<br><br><br><br>
+	<div id="p2-status">
+		<h3>PLAYER 2</h3>
+		<p>The Hospital</p>
+		<p>The Saloon</p>
+		<p>The Inn</p>
+		<p>Henrietta's</p>
+	</div>
+
+</div>
+
+<footer>Artwork by Quinn Salazar, Storyline by T.J. Troy, Game Design/Development by Juli Emmel <br><strong>www.JUSTJIFFY.com</strong>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
