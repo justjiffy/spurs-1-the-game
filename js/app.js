@@ -113,15 +113,14 @@ moveDown = function() {
 };
 
 var start1 = function() {
-	// $('#popUpContent').html('<br><br><br><br><p>Hey there lonely stranger, <br> This game is currenly only available in two player mode. <br><br>Channel your alter ego, hit refresh and double your luck playing two player.</p><br><br>' );
 	$('aside').toggle(false);
 	p1.turn = true;
-	p1.p1only = true;
 	whoseTurn();
 	$('#start').html(p1.img);
-	$('#p2status').hide();
 	$('#gameCard').show();
-	$('#instructions').show().html('Press Space Bar to Roll Die');
+	$('#instruction').show().html('Press Space Bar to Roll Die');
+	$('#p2-status').hide();
+	p1.p1only = true;
 };
 
 var start2 = function() {
@@ -183,13 +182,13 @@ function checkAction() {
 	if (currRoll == count) {
 		
 	//HOSPITAL
-	if ( player.col == 3 && player.row == 3 ) {
-	if (player.item1 === false) {
+	if ( player.col === 3 && player.row === 3 ) {
+	if ( player.item1 === false) {
 	$('#popUpContent').html("").append(" <br><br><p>You made it to the hospital, but Harden could barely speak. Shaken by the sight of his friend spontaneously combusting, he barely manages to slip you an mearly indecipherable note before visitng hours end.</p><br><br><h3>Acquired 1 Item: Harden's Letter</h3><br><br><p>If you can make it through Adam's Ale to the Town Center, maybe you'll have more luck</p><br><br><center><button id='cont'>CONTINUE</button></center> " );
 	$('aside').toggle(true);
 	player.item1 = true;
-	if (player == p1) { $('#p1item1').addClass('acquired'); }
-	else if (player == p2) { $('#p2item1').addClass('acquired'); }
+	if (player === p1) { $('#p1item1').addClass('acquired'); }
+	else if (player === p2) { $('#p2item1').addClass('acquired'); }
 	$('#cont').on('click', function() { $('aside').toggle(false); });
 	}
 	nextPlayer();
@@ -197,12 +196,12 @@ function checkAction() {
 	
 	//FIRST QUESTION MARK	
 	
-		else if ( player.col == 6 && player.row == 7 ) { 
+		else if ( player.col === 6 && player.row === 7 ) { 
 			if (player.item1 === false) { 
 				$('#popUpContent').html("Have you visited Harden at the Hospital Yet? <br><br><br><br> <button id='cont'>Keep Playing</button> " ); $('#cont').on('click', function() { $('aside').toggle(false) }); }
 			else { $('#popUpContent').html("You got a moment to rest and look at Harden's letter again... it definitely says:<br><br> <h3>SOMETHING</h3> <br><br><br><br> <button id='cont'>Keep Playing</button> "); $('#cont').on('click', function() { $('aside').toggle(false) }); player.clue1 = true; 
-					if (player == p1) { $('#p1clue1').addClass('acquired') }
-		 			else if (player == p2) { $('#p2clue1').addClass('acquired') }; 
+					if (player === p1) { $('#p1clue1').addClass('acquired') }
+		 			else if (player === p2) { $('#p2clue1').addClass('acquired') }; 
 		 		} 
 			$('aside').toggle(true); 
 			nextPlayer(); 
@@ -211,13 +210,13 @@ function checkAction() {
 	
 	//SALOON	
 	
-	else if ( player.col == 10 && player.row == 7 ) { 
+	else if ( player.col === 10 && player.row == 7 ) { 
 		if (player.item2 === false) {
 		 $('#popUpContent').html("").append(" <br><br><p>You try to relax and get your mind off things, but everyone at the bar is gossiping about the new railline, Ben Rooster setting fire, his son now missing...?! Maybe someone at Town's Center can answer some questions. Better get a jug to go... </p><br><br><h3>Acquired 1 Item: A fifth of Whisky</h3><br><br><p>Onward to Town!</p><br><br><center><button id='cont'>CONTINUE</button></center> " );
 		 $('aside').toggle(true);
 		 player.item2 = true;
-		 if (player == p1) { $('#p1item2').addClass('acquired') }
-		 	else if (player == p2) { $('#p2item2').addClass('acquired') };
+		 if (player === p1) { $('#p1item2').addClass('acquired') }
+		 	else if (player === p2) { $('#p2item2').addClass('acquired') };
 		 $('#cont').on('click', function() { $('aside').toggle(false) });
 		 }
 		 else { 
