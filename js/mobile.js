@@ -1,5 +1,3 @@
-$(function() {
-
 var boardArray = [["X", "X", "X", "S", , "", "", "X", "X", "X"],   //row 1  (s = start)
   [ "X", "X", "X", "", "X", "X", "", "X", "X", "X"], //row 2	
   [ "X", "X", "X", "", "X", "X", "", "X", "X", "X"], //row 3
@@ -117,8 +115,9 @@ var start1 = function() {
 	p1.turn = true;
 	whoseTurn();
 	$('#start').html(p1.img);
+	$('#navigation').show();
 	$('#gameCard').show();
-	$('#instruction').show().html('Press Space Bar to Roll Die');
+	$('#instruction').show().html('Tap Screen to Roll Die');
 	$('#p2-status').hide();
 	p1.p1only = true;
 };
@@ -129,7 +128,7 @@ var start2 = function() {
 	whoseTurn();
 	$('#start').html(p1.img).append(p2.img);
 	$('#gameCard').show();
-	$('#instruction').show().html('Press Space Bar to Roll Die');
+	$('#instruction').show().html('Tap Screen to Roll Die');
 };
 
 var close = function() {
@@ -137,29 +136,38 @@ var close = function() {
 	$('aside').hide();
 };
 
-$('html').on('keyup', function(el) {
-	if (currRoll - count === 0) { $('#instruction').show(); }
-	else if (el.keyCode == 39) { moveRight(player); }
-	else if (el.keyCode == 37) { moveLeft(player); }
-	else if (el.keyCode == 38) { moveUp(player); }
-	else if (el.keyCode == 40) { moveDown(player); }
-	checkAction();
-});
+//TRIGGERS GAME KEYS (spacebar = 0, etc...)
+// $('html').on('keyup', function(el) {
+// 	if (currRoll - count === 0) { $('#instruction').show(); }  ==> if 
+// 	else if (el.keyCode == 39) { moveRight(player); } ==> else if ()
+// 	else if (el.keyCode == 37) { moveLeft(player); }
+// 	else if (el.keyCode == 38) { moveUp(player); }
+// 	else if (el.keyCode == 40) { moveDown(player); }
+// 	checkAction();
+// });
 
-$('html').on('keydown', function(el) {
-	if( (el.keyCode == 32) || el.keyCode == 37 || el.keyCode == 38 || el.keyCode == 39 || el.keyCode == 40) {
-	el.preventDefault();
-	$('#instruction').hide(); }
-});
-
-
-$('body').keyup(function(el) {
-	if ( el.keyCode == 32 ) {
+//make a eventlistening function
+// have an event listners for..
+$('#die').on('click', function() {
 	dieRoll();
-	if (currRoll === 1) { $('#instruction').show().html('Use Arrow Keys to Move ' + currRoll + ' Space.'); }
-	else { $('#instruction').show().html('Use Arrow Keys to Move ' + currRoll + ' Spaces.'); }
-	}
 });
+
+// DISABLES DEFAULT KEYCODE FUNCTIONS
+
+// $('html').on('keydown', function(el) {
+// 	if( (el.keyCode == 32) || el.keyCode == 37 || el.keyCode == 38 || el.keyCode == 39 || el.keyCode == 40) {
+// 	el.preventDefault();
+// 	$('#instruction').hide(); }
+// });
+
+
+// $('body').keyup(function(el) {
+// 	if ( el.keyCode == 32 ) {
+// 	dieRoll();
+// 	if (currRoll === 1) { $('#instruction').show().html('Use Arrow Keys to Move ' + currRoll + ' Space.'); }
+// 	else { $('#instruction').show().html('Use Arrow Keys to Move ' + currRoll + ' Spaces.'); }
+// 	}
+// });
 
 
 var dieRoll = function() {
@@ -172,10 +180,6 @@ var dieRoll = function() {
 	else if (currRoll == 5) { $('#die').html('<img src="images/die-5.jpg" />'); }
 	else if (currRoll == 6) { $('#die').html('<img src="images/die-6.jpg" />'); }
 };
-
-$('#instruction').draggable();
-$('#gameCard').draggable();
-$('aside').resizable(); //can't be draggable and resizable?? 
 
 //game board actions
 function checkAction() {
@@ -345,6 +349,5 @@ $('#play2player').on('click', function() {
 	start2();
 });
 
-});
 
 
