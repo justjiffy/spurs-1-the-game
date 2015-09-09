@@ -20,16 +20,8 @@
 		}
 		</style>
 
-		<script type="text/javascript">
-			if((navigator.userAgent.match(/iPhone/i)) || 
-			 (navigator.userAgent.match(/iPod/i))) {
-			   if (document.cookie.indexOf("iphone_redirect=false") == -1) window.location = "mobile.html"; }
-		</script>
-
-	<title>Kilbourn the Game</title>
-
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-
+		<link rel="stylesheet" type="text/css" href="css/mobile.css">
+		<title>Kilbourn the Game</title>
 </head>
 
 <body>
@@ -340,51 +332,50 @@
 	</div>
 </aside>
 
-<div id="instruction">
-	</div>
-
-<div id="gameCard">
-	<div id="p1-status">
-		<h3 id ="p1-turn">PLAYER 1</h3>
-			<div id="p1items">
-				<p>ITEMS: </p>
-				<div id="p1item1" class="items"></div>
-				<div id="p1item2" class="items"></div>
-				<div id="p1item3" class="items"></div>
+<div id="navigation">
+		<div id="instruction">
 			</div>
-			<br><br>
-			<div id="p1clues">
-				<p>CLUES:</p>
-				<div id="p1clue1" class="items"></div>
-				<div id="p1clue2" class="items"></div>
-				<div id="p1clue3" class="items"></div>
-				<div id="p1clue4" class="items"></div>
-			</div>	
-	</div>
 
-<br><br><br><br>
+			<div id="gameCard">
+				<div id="p1-status">
+					<h3 id ="p1-turn">PLAYER 1</h3>
+						<div id="p1items">
+							<p style="display: inline">ITEMS: </p>
+							<div id="p1item1" class="items"></div>
+							<div id="p1item2" class="items"></div>
+							<div id="p1item3" class="items"></div>
+						</div>
+						<div id="p1clues" style="display: inline">
+							<p style="display: inline">CLUES:</p>
+							<div id="p1clue1" class="items"></div>
+							<div id="p1clue2" class="items"></div>
+							<div id="p1clue3" class="items"></div>
+							<div id="p1clue4" class="items"></div><br><br>
+						</div>	
+				</div>
 
-	<div id="p2-status">
-		<h3 id="p2-turn">PLAYER 2</h3>
-			<div id="p2items">
-				<p>ITEMS:</p>
-				<div id="p2item1" class="items"></div>
-				<div id="p2item2" class="items"></div>
-				<div id="p2item3" class="items"></div>
+				<div id="p2-status">
+					<h3 id="p2-turn">PLAYER 2</h3>
+						<div id="p2items">
+							<p>ITEMS:</p>
+							<div id="p2item1" class="items"></div>
+							<div id="p2item2" class="items"></div>
+							<div id="p2item3" class="items"></div>
+						</div>
+						<br><br>
+							
+						<div id="p2clues">
+							<p>CLUES:</p>
+							<div id="p2clue1" class="items"></div>
+							<div id="p2clue2" class="items"></div>
+							<div id="p2clue3" class="items"></div>
+							<div id="p2clue4" class="items"></div>
+						</div>	
+				</div>
+
 			</div>
-			<br><br>
-				
-			<div id="p2clues">
-				<p>CLUES:</p>
-				<div id="p2clue1" class="items"></div>
-				<div id="p2clue2" class="items"></div>
-				<div id="p2clue3" class="items"></div>
-				<div id="p2clue4" class="items"></div>
-			</div>	
-	</div>
-
-	</div>
-</div>
+		</div>
+</div>  <!-- end navigation -->
 
 <footer>Artwork by Quinn Salazar, Storyline by T.J. Troy, Game Design/Development by Juli Emmel <br><strong>www.JUSTJIFFY.com</strong>
 </footer>
@@ -393,5 +384,5 @@
 </body>
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<script src="js/app.js"></script>
+<script src="js/mobile.js"></script>
 </html>
