@@ -26,15 +26,19 @@
 
 <body>
 
-<header>
-	<h1>SPURS #1 - The Game</h1>
-</header>
+<header><h1>SPURS #1 - The Game</h1></header>
 
 <main> 
+  	<div id="die"></div>
 
-  <div id="die"></div>
+  	<div id="keypad">
+  		<img id="up" src="images/arrow_up.jpg" />
+  		<img id="down" src="images/arrow_down.jpg" />
+  		<img id="left" src="images/arrow_right.jpg" />
+  		<img id="right" src="images/arrow_left.jpg" />
+  	</div>
   	
-  <div id="board">
+  	<div id="board">
 	 <!-- LEVEL 1 -->
 		<!--row 1 --> 
 		<div class="level1 square x" ></div>
@@ -319,21 +323,21 @@
 								<div class="level4 square x"></div>
 								<div class="level4 square x"></div>
 		  </div> <!--end of board -->
-</main>
+	</main>
 
-<aside>
-	<div id="popUpContent">
-	<h2>HELP!!!</h2>
-	<p>Terrible things are happening in the town of Kilbourn. There was a freak mining accident that the authorities are keeping under wraps. Rumor has is Ben Rooster, one of the miners, spontaneously combust. His home was also set ablaze and his son, Simon, has been reported missing</p><br><br>
+	<aside>
+		<div id="popUpContent">
+		<h2>HELP!!!</h2>
+		<p>Terrible things are happening in the town of Kilbourn. There was a freak mining accident that the authorities are keeping under wraps. Rumor has is Ben Rooster, one of the miners, spontaneously combust. His home was also set ablaze and his son, Simon, has been reported missing</p><br><br>
 
-	<h3>Help find Simon and figure out what happened in the mine!<h3><br>
+		<h3>Help find Simon and figure out what happened in the mine!<h3><br>
 
-	<button id="play1player">1 PLAYER</button> <button id="play2player">2 PLAYER</button>
-	</div>
-</aside>
+		<button id="play1player">1 PLAYER</button> <button id="play2player">2 PLAYER</button>
+		</div>
+	</aside>
 
-<div id="navigation">
-		<div id="instruction">
+	<div id="navigation">
+			<div id="instruction">
 			</div>
 
 			<div id="gameCard">
@@ -352,7 +356,7 @@
 							<div id="p1clue3" class="items"></div>
 							<div id="p1clue4" class="items"></div><br><br>
 						</div>	
-				</div>
+				</div> <!-- p1 status -->
 
 				<div id="p2-status">
 					<h3 id="p2-turn">PLAYER 2</h3>
@@ -371,11 +375,11 @@
 							<div id="p2clue3" class="items"></div>
 							<div id="p2clue4" class="items"></div>
 						</div>	
-				</div>
+				</div> <!-- end p2 status -->
 
-			</div>
-		</div>
-</div>  <!-- end navigation -->
+			</div> <!-- end game card -->
+		</div> <!-- end navigation -->
+</div>  
 
 <footer>Artwork by Quinn Salazar, Storyline by T.J. Troy, Game Design/Development by Juli Emmel <br><strong>www.JUSTJIFFY.com</strong>
 </footer>

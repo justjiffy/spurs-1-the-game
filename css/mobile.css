@@ -72,8 +72,8 @@ button {
   height: 125px;
   width: 125px;
   position: fixed;
-  bottom: 15%;
-  right: 15%;
+  bottom: 50px;
+  right: 50px;
   background-color: black;
   z-index: 1;
   line-height: 75px;
@@ -126,7 +126,7 @@ button {
 
 aside {
   padding: 10% 100px;
-  z-index: 1;
+  z-index: 1000;
   border-radius: 20px;
   overflow: scroll;
   display: block;
@@ -174,7 +174,7 @@ aside {
   margin: 0 auto;
   text-align: center;
   font-family: 'Birch W03';
-  font-size: 40px;
+  font-size: 50px;
 }
 
 .square {
@@ -201,3 +201,31 @@ aside {
 
 .myturn {
   text-shadow: 3px 3px 6px rgba(135, 0, 0, 0.66); }
+
+#up {
+  position: fixed;
+  z-index: 100;
+  bottom: 250px;
+  left: 150px;
+}
+
+#down {
+  position: fixed;
+  z-index: 100;
+  bottom: 100px;
+  left: 150px;
+}
+
+#right {
+  position: fixed;
+  z-index: 100;
+  bottom: 175px;
+  left: 75px;
+}
+
+#left {
+  position: fixed;
+  z-index: 100;
+  bottom: 175px;
+  left: 225px;
+}
