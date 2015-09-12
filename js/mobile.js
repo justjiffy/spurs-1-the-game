@@ -138,12 +138,16 @@ var close = function() {
 
 //TRIGGERS GAME KEYS (spacebar = 0, etc...)
 // $('html').on('keyup', function(el) {
-// 	if (currRoll - count === 0) { $('#instruction').show(); }  ==> if 
-// 	else if (el.keyCode == 39) { moveRight(player); } ==> else if ()
-// 	else if (el.keyCode == 37) { moveLeft(player); }
-// 	else if (el.keyCode == 38) { moveUp(player); }
-// 	else if (el.keyCode == 40) { moveDown(player); }
-// 	checkAction();
+// if (currRoll - count === 0) { $('#instruction').show(); }  ==> if 
+	$('#left').on('click', function() { moveRight(player);} );
+	$('#right').on('click', function() { moveLeft(player);} );
+	$('#up').on('click', function() { moveUp(player);} );
+	$('#down').on('click', function() { moveDown(player);} );
+// ; } ==> else if ()
+//	else if (el.keyCode == 37) { moveLeft(player); }
+//	else if (el.keyCode == 38) { moveUp(player); }
+//	else if (el.keyCode == 40) { moveDown(player); }
+//	checkAction();
 // });
 
 //make a eventlistening function
